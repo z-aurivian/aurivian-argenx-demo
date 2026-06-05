@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>argenx · Pulse Intelligence · June 5, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:    #196539;
+  --green-lt: #247A44;
+  --lime:     #89BC53;
+  --grey:     #535350;
+  --grey-lt:  #7A7A77;
+  --grey-ul:  #AEAEAB;
+  --bg:       #F7F8F5;
+  --paper:    #EFF3EA;
+  --paper-dk: #E3EAD9;
+  --rule:     #CCDABF;
+  --rule-lt:  #DDE8D0;
+  --ink:      #1A2418;
+  --ink-mid:  #3A4837;
+  --ink-lt:   #6B7A65;
+  --amber:    #C45E00;
+  --rose:     #8B2635;
+  --purple:   #4A3570;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); height: 100vh; overflow: hidden; }
+
+/* SHELL */
+#shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: 52px 1fr;
+  grid-template-areas: "topbar topbar" "sidebar main";
+  height: 100vh;
+  overflow: hidden;
+  transition: grid-template-columns 0.25s ease;
+  position: relative;
+}
+#shell.collapsed { grid-template-columns: 0px 1fr; }
+
+/* TOPBAR */
+#topbar {
+  grid-area: topbar;
+  background: #fff;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 0 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.topbar-left { display: flex; align-items: center; gap: 12px; }
+.topbar-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.topbar-wordmark { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--grey); letter-spacing: 0.02em; }
+.topbar-divider { width: 1px; height: 20px; background: var(--rule); }
+.topbar-product { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; }
+.topbar-right { display: flex; align-items: center; gap: 10px; }
+
+.btn-listen {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--ink); border: none; border-radius: 6px; padding: 6px 12px;
+  cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--lime); letter-spacing: 0.04em;
+}
+.listen-dot { width: 6px; height: 6px; background: var(--lime); border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+.date-chip { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--grey-lt); letter-spacing: 0.03em; }
+
+.btn-personalize {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 5px 10px;
+  cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--green); letter-spacing: 0.03em;
+}
+.persona-avatar {
+  width: 18px; height: 18px; background: var(--green); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 600;
+}
+
+/* SIDEBAR TOGGLE */
+#sidebar-toggle {
+  position: fixed; left: 208px; top: 50%; transform: translateY(-50%);
+  width: 16px; height: 40px;
+  background: var(--paper); border: 1px solid var(--rule); border-left: none;
+  border-radius: 0 4px 4px 0; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace; font-size: 10px; color: var(--grey-lt);
+  z-index: 200; transition: left 0.25s ease;
+}
+#shell.collapsed #sidebar-toggle { left: 0px; }
+
+/* SIDEBAR */
+#sidebar {
+  grid-area: sidebar;
+  background: var(--paper); border-right: 1px solid var(--rule);
+  overflow-y: auto; overflow-x: hidden;
+  transition: opacity 0.2s ease;
+}
+#shell.collapsed #sidebar { opacity: 0; pointer-events: none; }
+
+.sidebar-inner { padding: 16px 0; min-width: 220px; }
+
+.sidebar-section-label {
+  font-family: 'DM Mono', monospace; font-size: 8px; font-weight: 500;
+  color: var(--grey-ul); letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0 14px 6px; margin-top: 12px;
+}
+
+.brief-card {
+  padding: 10px 14px; cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background 0.15s; position: relative;
+}
+.brief-card:hover { background: var(--paper-dk); }
+.brief-card.active { border-left-color: var(--green); background: rgba(25,101,57,0.06); }
+.brief-card-title { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; color: var(--ink-mid); line-height: 1.4; margin-bottom: 2px; }
+.brief-card.active .brief-card-title { color: var(--green); }
+.brief-card-meta { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--grey-ul); letter-spacing: 0.03em; }
+.new-dot { width: 6px; height: 6px; background: var(--amber); border-radius: 50%; position: absolute; top: 10px; right: 10px; }
+
+.sidebar-rule { height: 1px; background: var(--rule-lt); margin: 12px 14px; }
+
+.nav-item {
+  display: flex; align-items: center; gap: 8px; padding: 8px 14px;
+  cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink-mid);
+  transition: background 0.15s; text-decoration: none; list-style: none;
+}
+.nav-item:hover { background: var(--paper-dk); }
+.nav-item.active { color: var(--green); font-weight: 500; }
+.nav-item.muted { color: var(--grey-ul); cursor: default; }
+.nav-item.muted:hover { background: transparent; }
+.nav-icon { font-size: 12px; width: 14px; text-align: center; }
+.nav-soon {
+  font-family: 'DM Mono', monospace; font-size: 7px;
+  background: var(--paper-dk); color: var(--grey-lt);
+  border: 1px solid var(--rule); border-radius: 3px; padding: 1px 4px;
+  margin-left: auto; letter-spacing: 0.06em;
+}
+
+/* MAIN */
+#main { grid-area: main; overflow-y: auto; background: var(--bg); }
+.view { display: none; }
+.view.active { display: block; }
+
+/* BRIEF VIEW */
+#view-brief { max-width: 820px; margin: 0 auto; padding: 32px 40px 80px; }
+
+.brief-eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+.tag { font-family: 'DM Mono', monospace; font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
+.tag-outline { border: 1px solid var(--green); color: var(--green); }
+.tag-filled { background: var(--lime); color: var(--ink); }
+.brief-date-right { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 9px; color: var(--grey-lt); }
+
+.brief-headline { font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 700; color: var(--ink); line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 14px; }
+.brief-headline em { color: var(--green); font-style: italic; }
+
+.brief-lede { font-family: 'Libre Baskerville', serif; font-size: 13.5px; line-height: 1.9; color: var(--ink-mid); max-width: 64ch; margin-bottom: 16px; }
+
+.brief-meta {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  padding: 12px 0; border-top: 1px solid var(--rule-lt); border-bottom: 1px solid var(--rule-lt); margin-bottom: 24px;
+}
+.meta-item { display: flex; flex-direction: column; gap: 2px; }
+.meta-label { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--grey-ul); letter-spacing: 0.08em; text-transform: uppercase; }
+.meta-value { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; color: var(--green); }
+.meta-value.rose { color: var(--rose); }
+.meta-value.muted { color: var(--ink-lt); font-weight: 400; }
+
+/* SITUATION ROOM */
+.situation-room {
+  background: var(--ink); border-radius: 8px; padding: 20px 24px; margin-bottom: 32px;
+  border-top: 3px solid; border-image: linear-gradient(90deg, var(--green), var(--lime), var(--green)) 1;
+}
+.situation-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--lime); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+.situation-body { font-family: 'Libre Baskerville', serif; font-size: 13px; line-height: 1.75; color: #C8D8C0; }
+.situation-body strong { color: #E8F0E4; font-weight: 700; }
+
+/* SECTIONS */
+.section-rule { height: 1px; background: var(--rule-lt); margin: 32px 0; }
+
+.brief-section { opacity: 0; transform: translateY(10px); animation: fadeUp 0.4s ease forwards; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+.section-number { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.section-num-label {
+  font-family: 'DM Mono', monospace; font-size: 9px; color: var(--lime); letter-spacing: 0.08em;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-num-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--green); }
+.section-category { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--grey-lt); letter-spacing: 0.06em; }
+
+.section-h2 { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.35; margin-bottom: 10px; }
+.section-h2 em { color: var(--green); font-style: italic; }
+
+.pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.pill { font-family: 'DM Mono', monospace; font-size: 7.5px; font-weight: 500; letter-spacing: 0.06em; padding: 3px 8px; border-radius: 3px; border: 1px solid; }
+.pill-hot   { background: rgba(196,94,0,0.1);    border-color: var(--amber);  color: var(--amber); }
+.pill-new   { background: rgba(139,38,53,0.1);   border-color: var(--rose);   color: var(--rose); }
+.pill-watch { background: rgba(25,101,57,0.1);   border-color: var(--green);  color: var(--green); }
+.pill-sc    { background: rgba(137,188,83,0.15); border-color: var(--lime);   color: #3A6020; }
+.pill-iv    { background: rgba(74,53,112,0.1);   border-color: var(--purple); color: var(--purple); }
+
+.section-body { font-family: 'DM Sans', sans-serif; font-size: 13px; line-height: 1.9; color: var(--ink-mid); margin-bottom: 16px; }
+
+.pull-quote { border-left: 3px solid var(--lime); background: rgba(137,188,83,0.08); padding: 14px 18px; margin: 16px 0; border-radius: 0 6px 6px 0; }
+.pull-quote-text { font-family: 'Libre Baskerville', serif; font-size: 13px; font-style: italic; color: var(--ink-mid); line-height: 1.7; margin-bottom: 8px; }
+.pull-quote-cite { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--grey-lt); letter-spacing: 0.04em; }
+
+.sources { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.source-chip { font-family: 'DM Mono', monospace; font-size: 8px; border: 1px solid var(--rule); border-radius: 3px; padding: 3px 8px; color: var(--green); text-decoration: none; letter-spacing: 0.03em; transition: background 0.15s; }
+.source-chip:hover { background: var(--paper); }
+
+.fvq { border-left: 3px solid var(--amber); padding: 12px 16px; margin-top: 16px; }
+.fvq-label { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--amber); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+.fvq-text { font-family: 'DM Sans', sans-serif; font-size: 12px; font-style: italic; color: var(--ink-lt); line-height: 1.6; }
+
+/* ADMIN COMPARISON */
+.admin-compare { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; margin: 16px 0; }
+.admin-col { padding: 14px 16px; }
+.admin-col-iv { background: rgba(74,53,112,0.06); border-right: 1px solid var(--rule); }
+.admin-col-sc { background: rgba(137,188,83,0.08); }
+.admin-col-header { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+.admin-col-name { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; color: var(--ink); }
+.admin-items { list-style: none; }
+.admin-items li { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--ink-mid); line-height: 1.8; }
+.admin-items li strong { font-weight: 600; color: var(--ink); }
+
+/* COMPETITIVE MATRIX */
+.comp-matrix { width: 100%; border-collapse: collapse; margin: 16px 0; font-family: 'DM Sans', sans-serif; font-size: 12px; border-radius: 6px; overflow: hidden; }
+.comp-matrix thead tr { background: var(--green); }
+.comp-matrix thead th { color: #fff; font-family: 'DM Mono', monospace; font-size: 9px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 14px; text-align: left; }
+.comp-matrix tbody tr { border-bottom: 1px solid var(--rule-lt); }
+.comp-matrix tbody tr:nth-child(odd)  { background: #fff; }
+.comp-matrix tbody tr:nth-child(even) { background: var(--paper); }
+.comp-matrix tbody tr.hl { background: rgba(137,188,83,0.12) !important; }
+.comp-matrix td { padding: 10px 14px; color: var(--ink-mid); vertical-align: middle; }
+.comp-matrix td:first-child { font-weight: 600; color: var(--ink); }
+.chk { color: var(--green); font-weight: 700; }
+.crs { color: var(--grey-ul); }
+
+/* KOL GRID */
+.kol-intro { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink-lt); line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+.kol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.kol-card { background: #fff; border: 1px solid var(--rule); border-radius: 8px; padding: 16px; }
+.kol-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.kol-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; flex-shrink: 0; }
+.av-green { background: var(--green); color: #fff; }
+.av-lime  { background: var(--lime);  color: var(--ink); }
+.av-grey  { background: var(--grey);  color: #fff; }
+.kol-name  { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.kol-title { font-family: 'DM Sans', sans-serif; font-size: 10px; color: var(--ink-lt); line-height: 1.4; margin-bottom: 4px; }
+.kol-platforms { display: flex; gap: 4px; flex-wrap: wrap; }
+.kol-platform { font-family: 'DM Mono', monospace; font-size: 7px; border: 1px solid var(--rule); border-radius: 2px; padding: 1px 5px; color: var(--grey-lt); letter-spacing: 0.04em; }
+.kol-body { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--ink-lt); line-height: 1.6; margin-bottom: 10px; }
+.kol-narrative { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; padding-top: 8px; border-top: 1px solid var(--rule-lt); }
+.kol-narrative-label { font-family: 'DM Mono', monospace; font-size: 7px; color: var(--grey-ul); letter-spacing: 0.08em; text-transform: uppercase; }
+.kol-narrative-value { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-lt); }
+.kol-ripple { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 8px; }
+.ripple-h  { color: var(--green); }
+.ripple-vh { color: #5A9030; }
+.ripple-hi { color: var(--amber); }
+
+/* BOTTOM LINE */
+.bottom-line { background: #fff; border-left: 4px solid var(--green); border-radius: 0 8px 8px 0; padding: 20px 24px; margin-top: 32px; }
+.bottom-line-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.bottom-line-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; }
+.bottom-line-items { display: flex; flex-direction: column; gap: 14px; }
+.bottom-line-item { display: flex; gap: 14px; }
+.bl-num { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--green); flex-shrink: 0; min-width: 24px; }
+.bl-text { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-mid); line-height: 1.7; }
+
+/* FOOTER */
+.brief-footer { display: flex; justify-content: space-between; align-items: flex-start; padding: 24px 0 0; border-top: 1px solid var(--rule-lt); margin-top: 32px; flex-wrap: wrap; gap: 12px; }
+.footer-sources { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--grey-lt); letter-spacing: 0.04em; }
+.footer-sources strong { color: var(--green); font-weight: 500; }
+.footer-disclaimer { font-family: 'DM Mono', monospace; font-size: 7.5px; color: var(--grey-ul); text-align: right; max-width: 280px; line-height: 1.5; }
+
+/* AURIVIAN PLACEHOLDER */
+#view-aurivian { display: none; align-items: center; justify-content: center; height: calc(100vh - 52px); flex-direction: column; gap: 16px; text-align: center; }
+#view-aurivian.active { display: flex; }
+.aurivian-placeholder-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--grey-ul); letter-spacing: 0.12em; text-transform: uppercase; }
+.aurivian-placeholder-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-lt); max-width: 320px; line-height: 1.6; }
+.aurivian-badge { border: 1px dashed var(--grey-ul); border-radius: 4px; padding: 4px 12px; font-family: 'DM Mono', monospace; font-size: 9px; color: var(--grey-ul); letter-spacing: 0.08em; }
+
+/* OVERLAY */
+#overlay { position: fixed; inset: 0; background: rgba(26,36,24,0.6); z-index: 1000; display: none; align-items: center; justify-content: center; }
+#overlay.open { display: flex; }
+.overlay-panel { background: #fff; border-radius: 8px; border-top: 3px solid var(--green); padding: 28px 32px; max-width: 480px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+.overlay-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+.overlay-heading { font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.overlay-subtext { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-lt); line-height: 1.6; margin-bottom: 20px; }
+.overlay-prompt { font-family: 'Libre Baskerville', serif; font-size: 14px; font-style: italic; color: var(--ink-mid); margin-bottom: 12px; }
+.overlay-textarea { width: 100%; height: 100px; border: 1px solid var(--rule); border-radius: 6px; padding: 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink); background: var(--bg); resize: none; outline: none; margin-bottom: 16px; }
+.overlay-textarea:focus { border-color: var(--green); }
+.overlay-textarea::placeholder { color: var(--grey-ul); }
+.overlay-buttons { display: flex; gap: 10px; margin-bottom: 12px; }
+.btn-skip { background: none; border: 1px solid var(--rule); border-radius: 6px; padding: 9px 18px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--ink-lt); cursor: pointer; }
+.btn-skip:hover { background: var(--paper); }
+.btn-save { background: var(--green); border: none; border-radius: 6px; padding: 9px 18px; font-family: 'DM Sans', sans-serif; font-size: 13px; color: #fff; cursor: pointer; font-weight: 500; }
+.btn-save:hover { background: var(--green-lt); }
+.overlay-footer-note { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--grey-ul); line-height: 1.5; }
+
+/* RESPONSIVE */
+@media (max-width: 680px) {
+  #shell { grid-template-columns: 0px 1fr; }
+  #sidebar-toggle { display: none; }
+  #view-brief { padding: 20px 20px 60px; }
+  .kol-grid { grid-template-columns: 1fr; }
+  .admin-compare { grid-template-columns: 1fr; }
+  .brief-headline { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+<div id="shell">
+
+<!-- TOPBAR -->
+<header id="topbar">
+  <div class="topbar-left">
+    <a class="topbar-logo" href="#">
+      <svg width="24" height="24" viewBox="0 0 100 90" fill="none">
+        <path d="M52 8 C60 22,74 36,78 54 C81 66,74 78,65 74 C56 70,54 58,48 48 C42 38,32 34,24 38 C16 42,15 56,22 66 C29 76,46 80,52 68" stroke="#196539" stroke-width="10" stroke-linecap="round" fill="none"/>
+        <circle cx="74" cy="22" r="10" fill="#89BC53"/>
+      </svg>
+      <span class="topbar-wordmark">argenx</span>
+    </a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-product">Pulse Intelligence</span>
+  </div>
+  <div class="topbar-right">
+    <button class="btn-listen" onclick="alert('Audio brief coming soon. This will open the NPR Morning Edition-style podcast for this brief.')">
+      <span class="listen-dot"></span>&#127911; Listen
+    </button>
+    <span class="date-chip">Fri, June 5 2026</span>
+    <button class="btn-personalize" onclick="openPersona()">
+      <div class="persona-avatar">?</div>Personalize
+    </button>
+  </div>
+</header>
+
+<!-- SIDEBAR TOGGLE -->
+<button id="sidebar-toggle" onclick="toggleSidebar()">&#8249;</button>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-section-label">This Week</div>
+    <div class="brief-card active" onclick="showView('brief')">
+      <div class="new-dot"></div>
+      <div class="brief-card-title">IVIg Transition Risk &amp; SC Autonomy</div>
+      <div class="brief-card-meta">Jun 5 · 5 signals</div>
+    </div>
+    <div class="brief-card" onclick="showView('brief')">
+      <div class="brief-card-title">Payer Budget Impact Model</div>
+      <div class="brief-card-meta">Jun 3 · 2 signals</div>
+    </div>
+    <div class="brief-card" onclick="showView('brief')">
+      <div class="brief-card-title">Post-AAN ADHERE Signal</div>
+      <div class="brief-card-meta">Jun 1 · 3 signals</div>
+    </div>
+    <div class="sidebar-rule"></div>
+    <div class="sidebar-section-label">Last Month</div>
+    <div class="brief-card" onclick="showView('brief')">
+      <div class="brief-card-title">ADAPT OCULUS: Phase 3 Positive</div>
+      <div class="brief-card-meta">May 12</div>
+    </div>
+    <div class="brief-card" onclick="showView('brief')">
+      <div class="brief-card-title">Seroneg PDUFA Approved</div>
+      <div class="brief-card-meta">May 10</div>
+    </div>
+    <div class="brief-card" onclick="showView('brief')">
+      <div class="brief-card-title">IMAAVY withMe Confirmed</div>
+      <div class="brief-card-meta">Apr 28</div>
+    </div>
+    <div class="sidebar-rule"></div>
+    <div class="sidebar-section-label">Intelligence</div>
+    <div class="nav-item active" onclick="showView('brief')"><span class="nav-icon">&#8801;</span> Morning Brief</div>
+    <div class="nav-item muted"><span class="nav-icon">&#9678;</span> Narrative Map<span class="nav-soon">Soon</span></div>
+    <div class="nav-item muted"><span class="nav-icon">&#8725;</span> Signal Velocity<span class="nav-soon">Soon</span></div>
+    <div class="sidebar-rule"></div>
+    <div class="sidebar-section-label">Platform</div>
+    <div class="nav-item" onclick="showView('aurivian')"><span class="nav-icon">&#9675;</span> Link to Aurivian</div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+
+  <!-- VIEW: MORNING BRIEF -->
+  <div id="view-brief" class="view active">
+    <div id="view-brief-inner" style="max-width:820px;margin:0 auto;padding:32px 40px 80px;">
+
+      <div class="brief-eyebrow">
+        <span class="tag tag-outline">Intelligence Brief</span>
+        <span class="tag tag-filled">Vyvgart Hytrulo · CIDP</span>
+        <span class="brief-date-right">June 5, 2026 &middot; 6:42 AM ET</span>
+      </div>
+
+      <h1 class="brief-headline">
+        The IVIg transition question is now the defining clinical conversation in CIDP.
+        <em>And self-injection is changing what patients expect from treatment.</em>
+      </h1>
+
+      <p class="brief-lede">Five signals are moving this week. The IVIg-to-efgartigimod transition carries real relapse risk — and a Phase 4 trial is now testing a safer switch without requiring disease worsening first. The prefilled syringe approval has released a patient narrative about autonomy that is growing fast. Payers are beginning to model budget impact at scale. And argenx remains the only FcRn blocker with a CIDP indication — a window that will not stay open indefinitely.</p>
+
+      <div class="brief-meta">
+        <div class="meta-item"><span class="meta-label">Product Focus</span><span class="meta-value">Vyvgart Hytrulo · CIDP</span></div>
+        <div class="meta-item"><span class="meta-label">Indication</span><span class="meta-value muted">CIDP · gMG (AChR+)</span></div>
+        <div class="meta-item"><span class="meta-label">Priority</span><span class="meta-value rose">&#9679; High · 4 Action Items</span></div>
+        <div class="meta-item"><span class="meta-label">Prepared For</span><span class="meta-value muted">VP of Medical Affairs</span></div>
+      </div>
+
+      <div class="situation-room">
+        <div class="situation-label">Situation Room · 5 Active Signals</div>
+        <p class="situation-body"><strong>The strategic picture this week:</strong> Argenx is the sole FcRn blocker approved for CIDP — a first-mover position generating both clinical enthusiasm and real-world friction. The IVIg transition narrative is bifurcating: academic neurologists are cautiously optimistic while community practice is seeing relapse events that are making prescribers hesitate. The prefilled syringe has opened a patient discourse around home self-injection that argenx has the right to own — but hasn't yet fully claimed. Payer concern over budget impact is surfacing in P&amp;T committee language. The KOL conversation has shifted from "does it work?" to "who gets it first and how do you switch them safely?"</p>
+      </div>
+
+      <!-- S01 -->
+      <div class="brief-section" style="animation-delay:0.05s">
+        <div class="section-number"><span class="section-num-label">01</span><span class="section-category">Providers</span></div>
+        <h2 class="section-h2">The IVIg-to-Vyvgart transition carries real relapse risk. <em>A Phase 4 trial is now testing a switch without requiring disease worsening.</em></h2>
+        <div class="pills"><span class="pill pill-hot">&#8593; Accelerating</span><span class="pill pill-watch">Clinical Practice Signal</span></div>
+        <p class="section-body">A case series published in Pharmacy Times documented four patients who experienced severe CIDP relapse after switching from stable IVIg to efgartigimod. The ADHERE trial design required patients to worsen before starting — creating a real clinical hazard when replicated in practice. A Phase 4 trial led by Yessar Hussain, MD (UT Austin Dell Medical School), presented at PNS Annual Meeting 2025, tests whether patients can transition one week after their last IVIg infusion, without requiring disease worsening first.</p>
+        <div class="pull-quote">
+          <p class="pull-quote-text">"The ADHERE trial required patients to worsen before starting efgartigimod. In real practice, deliberately allowing a patient to relapse before initiating therapy is not always feasible or ethical. We need a better transition framework."</p>
+          <span class="pull-quote-cite">— Yessar Hussain, MD &middot; PNS Annual Meeting, May 2025 &middot; NeurologyLive, May 2026</span>
+        </div>
+        <div class="sources">
+          <a class="source-chip" href="https://www.pharmacytimes.com/view/transition-from-ivig-to-efgartigimod-in-patients-with-cidp-could-lead-to-worsening-of-disease" target="_blank">Pharmacy Times</a>
+          <a class="source-chip" href="https://www.neurologylive.com/view/phase-4-trial-test-transition-from-ivig-efgartigimod-chronic-inflammatory-demyelinating-polyneuropathy" target="_blank">NeurologyLive Phase 4</a>
+          <a class="source-chip" href="https://www.neurologylive.com/view/efgartigimod-for-cidp-in-clinical-practice" target="_blank">NeurologyLive Practice</a>
+        </div>
+        <div class="fvq">
+          <div class="fvq-label">&#8594; Field Validation Question</div>
+          <p class="fvq-text">Have you transitioned any CIDP patients from IVIg to Vyvgart Hytrulo — and if so, how did you manage the transition period? Are you aware of the Phase 4 study evaluating a direct switch one week after the last IVIg infusion?</p>
+        </div>
+      </div>
+
+      <div class="section-rule"></div>
+
+      <!-- S02 -->
+      <div class="brief-section" style="animation-delay:0.10s">
+        <div class="section-number"><span class="section-num-label">02</span><span class="section-category">Patients · SC Administration</span></div>
+        <h2 class="section-h2">The prefilled syringe has unlocked a new patient narrative: <em>"I do my injection in the morning and go to work."</em></h2>
+        <div class="pills"><span class="pill pill-new">&#9679; Emerging</span><span class="pill pill-sc">SC · Self-Injection</span></div>
+        <p class="section-body">The April 2025 FDA approval of the Vyvgart Hytrulo prefilled syringe — across both gMG and CIDP — has released a patient narrative that is building momentum. The 20-to-30-second injection at home is being described in stark contrast to the IVIg infusion center experience. This narrative is patient-originated, not brand-originated.</p>
+        <div class="admin-compare">
+          <div class="admin-col admin-col-iv">
+            <div class="admin-col-header"><span class="pill pill-iv" style="font-size:8px">IV</span><span class="admin-col-name">Vyvgart (IV)</span></div>
+            <ul class="admin-items">
+              <li>~60 min infusion</li><li>Clinic / HCP required</li>
+              <li>AChR+ gMG only</li><li><strong>No CIDP indication</strong></li>
+            </ul>
+          </div>
+          <div class="admin-col admin-col-sc">
+            <div class="admin-col-header"><span class="pill pill-sc" style="font-size:8px">SC</span><span class="admin-col-name">Vyvgart Hytrulo (SC)</span></div>
+            <ul class="admin-items">
+              <li><strong>20–30 sec prefilled syringe</strong></li><li>Self-inject at home / clinic / on the go</li>
+              <li><strong>Approved: AChR+ gMG + CIDP</strong></li><li>NCM home-training via My VYVGART Path</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pull-quote">
+          <p class="pull-quote-text">"I do my injection Friday morning before my shift. It takes less than making coffee. After years of clearing my schedule for infusion appointments, this feels like getting my life back."</p>
+          <span class="pull-quote-cite">— Representative of emerging patient discourse &middot; CIDP advocacy community &middot; May 2026</span>
+        </div>
+        <div class="sources">
+          <a class="source-chip" href="https://www.pharmacytimes.com/view/fda-approves-vyvgart-hytrulo-prefilled-syringe-with-self-injection-for-generalized-myasthenia-gravis-cidp" target="_blank">Pharmacy Times Prefilled Syringe</a>
+          <a class="source-chip" href="https://www.neurologylive.com/view/fda-approves-pre-filled-syringe-administration-fcrn-modulator-efgartigimod" target="_blank">NeurologyLive Self-Injection</a>
+          <a class="source-chip" href="https://practicalneurology.com/news/vyvgart-hytrulo-prefilled-syringe-approved-for-self-administration/2474127/" target="_blank">Practical Neurology</a>
+        </div>
+        <div class="fvq">
+          <div class="fvq-label">&#8594; Field Validation Question</div>
+          <p class="fvq-text">Are CIDP patients who are self-injecting at home describing the experience differently than their prior IVIg treatment — and are you encountering any barriers to enrollment in the Nurse Case Manager home-training program?</p>
+        </div>
+      </div>
+
+      <div class="section-rule"></div>
+
+      <!-- S03 -->
+      <div class="brief-section" style="animation-delay:0.15s">
+        <div class="section-number"><span class="section-num-label">03</span><span class="section-category">Payers</span></div>
+        <h2 class="section-h2">A 35% budget impact model is now in payer channels. <em>Prior authorization for CIDP is being drafted for the first time.</em></h2>
+        <div class="pills"><span class="pill pill-hot">&#8593; Accelerating</span><span class="pill pill-watch">Budget Impact Signal</span></div>
+        <p class="section-body">A budget impact model presented at AANEM 2025 calculated a 35.5% projected increase in healthcare spending for a 25-million-member plan assuming 10% efgartigimod uptake in CIDP year one. Both modeled scenarios (drawing from IVIg exclusively, or from IVIg broadly) produced near-identical results. This model is now circulating in payer channels. Prior authorization requirements for CIDP that did not exist 12 months ago are being drafted now.</p>
+        <div class="pull-quote">
+          <p class="pull-quote-text">"A 35% budget impact is significant enough that payers will respond with utilization management. The question is whether the clinical benefit story is strong enough to push back against step therapy requirements."</p>
+          <span class="pull-quote-cite">— Betsy Lahue MPH, Alkemi &middot; AANEM 2025 &middot; NeurologyLive, Feb 2026</span>
+        </div>
+        <div class="sources">
+          <a class="source-chip" href="https://www.neurologylive.com/view/efgartigimod-treatment-cidp-leads-increased-spending-study-shows" target="_blank">NeurologyLive Budget Impact</a>
+          <a class="source-chip" href="https://link.springer.com/article/10.1007/s11940-026-00869-7" target="_blank">Curr Treat Options Neurol</a>
+        </div>
+        <div class="fvq">
+          <div class="fvq-label">&#8594; Field Validation Question</div>
+          <p class="fvq-text">Are you seeing new prior authorization requirements for Vyvgart Hytrulo in CIDP that weren't present 6 months ago — and are payers asking for step-therapy documentation before approving efgartigimod as a first-line option?</p>
+        </div>
+      </div>
+
+      <div class="section-rule"></div>
+
+      <!-- S04 -->
+      <div class="brief-section" style="animation-delay:0.20s">
+        <div class="section-number"><span class="section-num-label">04</span><span class="section-category">Competitive Landscape</span></div>
+        <h2 class="section-h2">Argenx is the only FcRn blocker in CIDP. <em>Rozanolixizumab is in late-stage trials. The window is 12–18 months.</em></h2>
+        <div class="pills"><span class="pill pill-watch">Competitive Monitor</span></div>
+        <p class="section-body">As of June 2026, Vyvgart Hytrulo is the first and only FcRn blocker approved for CIDP. Nipocalimab (IMAAVY, J&amp;J) is not approved for CIDP. Rozanolixizumab (Rystiggo, UCB) is in late-stage CIDP development. A J&amp;J-sponsored indirect comparison found nipocalimab MG-ADL responses greater than efgartigimod at week 8 in gMG — data that does not apply to CIDP but is being used in gMG field conversations.</p>
+        <table class="comp-matrix">
+          <thead><tr><th>Agent</th><th>gMG</th><th>CIDP Approved</th><th>SC Self-Inject</th></tr></thead>
+          <tbody>
+            <tr class="hl"><td>Vyvgart Hytrulo · argenx</td><td><span class="chk">&#10003;</span> AChR+</td><td><span class="chk">&#10003;</span> Only one</td><td><span class="chk">&#10003;</span> Prefilled · home</td></tr>
+            <tr><td>Vyvgart IV · argenx</td><td><span class="chk">&#10003;</span> AChR+</td><td><span class="crs">&#10007;</span></td><td><span class="crs">&#10007;</span> IV only</td></tr>
+            <tr><td>IMAAVY · J&amp;J</td><td><span class="chk">&#10003;</span> AChR+/MuSK+</td><td><span class="crs">&#10007;</span></td><td><span class="crs">&#10007;</span> IV only</td></tr>
+            <tr><td>Rystiggo · UCB</td><td><span class="chk">&#10003;</span> AChR+/MuSK+</td><td><span class="crs">&#10007;</span> Trials ongoing</td><td><span class="chk">&#10003;</span> SC · clinic</td></tr>
+          </tbody>
+        </table>
+        <div class="sources">
+          <a class="source-chip" href="https://link.springer.com/article/10.1007/s11940-026-00869-7" target="_blank">Curr Treat Options Neurol FcRn Review</a>
+          <a class="source-chip" href="https://link.springer.com/article/10.1007/s12325-026-03543-1" target="_blank">Adv Therapy J&amp;J MAIC</a>
+        </div>
+        <div class="fvq">
+          <div class="fvq-label">&#8594; Field Validation Question</div>
+          <p class="fvq-text">Are neurologists in your region asking about competitive differentiation between Vyvgart Hytrulo and Rystiggo for CIDP — and how are they framing the CIDP indication gap for IMAAVY?</p>
+        </div>
+      </div>
+
+      <div class="section-rule"></div>
+
+      <!-- S05 -->
+      <div class="brief-section" style="animation-delay:0.25s">
+        <div class="section-number"><span class="section-num-label">05</span><span class="section-category">Post-AAN 2026 Signal</span></div>
+        <h2 class="section-h2">87.5% early benefit in treatment-naïve CIDP. <em>The earlier-line narrative is forming. Field medical needs to reinforce it now.</em></h2>
+        <div class="pills"><span class="pill pill-hot">&#8593; Active</span><span class="pill pill-watch">Post-Congress Signal</span></div>
+        <p class="section-body">At AAN Chicago (April 18–22, 2026), argenx presented an ADHERE post-hoc analysis showing 87.5% of treatment-naïve CIDP patients achieved early benefit from Vyvgart Hytrulo. A Medscape article published April 23, 2026 — written for neurologists, not by argenx — cited efgartigimod as "offering additional options, particularly for patients who cannot tolerate immunoglobulin." The earlier-line narrative is forming in clinical media independently. Every week this framing isn't reinforced is a week the default stays with IVIg.</p>
+        <div class="pull-quote">
+          <p class="pull-quote-text">"Efgartigimod offers additional options, particularly for patients who cannot tolerate immunoglobulin."</p>
+          <span class="pull-quote-cite">— Medscape clinical coverage &middot; April 23, 2026 (written for neurologists, independent of argenx)</span>
+        </div>
+        <div class="sources">
+          <a class="source-chip" href="https://www.globenewswire.com/news-release/2026/04/18/3276554/0/en/argenx-Brings-Neuromuscular-Leadership-to-AAN-2026-with-New-Data-Supporting-Broader-VYVGART-Use-Across-MG-and-CIDP.html" target="_blank">GlobeNewswire AAN 2026</a>
+          <a class="source-chip" href="https://reference.medscape.com/viewarticle/cidp-first-line-treatment-adults-2026a1000909" target="_blank">Medscape Apr 23 2026</a>
+        </div>
+        <div class="fvq">
+          <div class="fvq-label">&#8594; Field Validation Question</div>
+          <p class="fvq-text">Are you aware of the post-hoc ADHERE data showing 87.5% early benefit in treatment-naïve CIDP patients — and has this changed where you are positioning Vyvgart Hytrulo in your treatment algorithm?</p>
+        </div>
+      </div>
+
+      <div class="section-rule"></div>
+
+      <!-- S06 -->
+      <div class="brief-section" style="animation-delay:0.30s">
+        <div class="section-number"><span class="section-num-label">06</span><span class="section-category">KOL &amp; Digital Influencer Watch</span></div>
+        <h2 class="section-h2">The voices shaping how neurologists think about CIDP in 2026. <em>Who is posting, who is being amplified, and what they are saying.</em></h2>
+        <div class="pills"><span class="pill pill-watch">Community Signal</span><span class="pill pill-hot">Active Voices</span></div>
+        <p class="kol-intro">The CIDP conversation is happening across clinical journals, professional networks, and — increasingly — X and LinkedIn. The following voices have the highest current presence and amplification effect, tracked from public signal only.</p>
+        <div class="kol-grid">
+          <div class="kol-card">
+            <div class="kol-header">
+              <div class="kol-avatar av-green">YH</div>
+              <div><div class="kol-name">Yessar Hussain, MD</div><div class="kol-title">Asst Professor, Neurology<br>UT Austin Dell Medical School</div><div class="kol-platforms"><span class="kol-platform">X</span><span class="kol-platform">LinkedIn</span></div></div>
+            </div>
+            <p class="kol-body">PI on the Phase 4 IVIg-efgartigimod transition trial. High engagement from community neurologists who find content clinically actionable.</p>
+            <div class="kol-narrative"><span class="kol-narrative-label">Key narrative</span><span class="kol-narrative-value">Transition safety · Earlier-line use</span><span class="kol-ripple ripple-h">&#8593; High ripple</span></div>
+          </div>
+          <div class="kol-card">
+            <div class="kol-header">
+              <div class="kol-avatar av-lime">JA</div>
+              <div><div class="kol-name">Jeffrey Allen, MD</div><div class="kol-title">Professor, Neurology<br>University of Minnesota · ADHERE PI</div><div class="kol-platforms"><span class="kol-platform">Medscape</span><span class="kol-platform">LinkedIn</span></div></div>
+            </div>
+            <p class="kol-body">Principal investigator on the ADHERE trial. Post-AAN commentary on earlier-line positioning quoted by community neurologists.</p>
+            <div class="kol-narrative"><span class="kol-narrative-label">Key narrative</span><span class="kol-narrative-value">ADHERE data · Earlier-line CIDP</span><span class="kol-ripple ripple-vh">&#8593;&#8593; Very high ripple</span></div>
+          </div>
+          <div class="kol-card">
+            <div class="kol-header">
+              <div class="kol-avatar av-grey">LB</div>
+              <div><div class="kol-name">Lisa Butler</div><div class="kol-title">Executive Director<br>GBS|CIDP Foundation International</div><div class="kol-platforms"><span class="kol-platform">X</span><span class="kol-platform">LinkedIn</span><span class="kol-platform">Press</span></div></div>
+            </div>
+            <p class="kol-body">Most amplified patient advocacy voice in CIDP. Community of 70,000+ members. Self-injection narratives emerge here first.</p>
+            <div class="kol-narrative"><span class="kol-narrative-label">Key narrative</span><span class="kol-narrative-value">Treatment burden · Flexibility</span><span class="kol-ripple ripple-vh">&#8593;&#8593; Very high ripple</span></div>
+          </div>
+          <div class="kol-card">
+            <div class="kol-header">
+              <div class="kol-avatar av-lime">MM</div>
+              <div><div class="kol-name">Marco Meglio</div><div class="kol-title">Senior Medical Writer<br>NeurologyLive · CIDP/MG Beat</div><div class="kol-platforms"><span class="kol-platform">NeurologyLive</span><span class="kol-platform">LinkedIn</span></div></div>
+            </div>
+            <p class="kol-body">Authored or contributed to the majority of high-traffic CIDP clinical news pieces in 2025–2026. What he covers becomes what neurologists discuss.</p>
+            <div class="kol-narrative"><span class="kol-narrative-label">Key narrative</span><span class="kol-narrative-value">Clinical news framing · Broad reach</span><span class="kol-ripple ripple-hi">&#8593;&#8593; Highest amplification</span></div>
+          </div>
+        </div>
+        <div class="fvq">
+          <div class="fvq-label">&#8594; Field Validation Question</div>
+          <p class="fvq-text">Which of these voices are your key CIDP accounts most frequently citing — and are any of them driving specific objections or questions you are encountering in field conversations?</p>
+        </div>
+      </div>
+
+      <div class="section-rule"></div>
+
+      <!-- BOTTOM LINE -->
+      <div class="bottom-line">
+        <div class="bottom-line-header">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="#196539" stroke-width="1.5"/><path d="M4 8l3 3 5-5" stroke="#196539" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="bottom-line-label">Bottom Line · 4 Things That Matter This Week</span>
+        </div>
+        <div class="bottom-line-items">
+          <div class="bottom-line-item"><span class="bl-num">01</span><p class="bl-text">The IVIg transition relapse signal is the most consequential clinical conversation in CIDP right now. Field medical needs a safe-switch framework and must know the Hussain Phase 4 trial exists — before a prescriber's personal experience of a relapse event becomes Vyvgart's defining narrative in their practice.</p></div>
+          <div class="bottom-line-item"><span class="bl-num">02</span><p class="bl-text">The self-injection narrative is patient-originated and growing. Prescribers need to know about the My VYVGART Path Nurse Case Manager home-training program — this differentiator is not being communicated at scale and needs to be.</p></div>
+          <div class="bottom-line-item"><span class="bl-num">03</span><p class="bl-text">The 35% payer budget impact model is circulating. P&amp;T committees who haven't seen it will. The MA team needs a CIDP value narrative — IVIg cost offsets, hospitalisation avoidance, patient productivity — before prior auth barriers arrive.</p></div>
+          <div class="bottom-line-item"><span class="bl-num">04</span><p class="bl-text">The CIDP competitive window is 12–18 months. The post-hoc ADHERE data (87.5% early benefit in treatment-naïve patients) is the most important piece of evidence for moving from "second-line after IVIg failure" to "consider earlier." Every day that framing isn't in the field is a day the default stays with IVIg.</p></div>
+        </div>
+      </div>
+
+      <div class="brief-footer">
+        <div class="footer-sources"><strong>Sources</strong> · Pharmacy Times · NeurologyLive · Practical Neurology · GlobeNewswire · Medscape · Curr Treat Options Neurol · Adv Therapy &middot; Prepared For: VP of Medical Affairs</div>
+        <div class="footer-disclaimer">All sources external and public. No proprietary argenx data used. Internal use only.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VIEW: AURIVIAN PLACEHOLDER -->
+  <div id="view-aurivian" class="view">
+    <div style="display:flex;align-items:center;justify-content:center;height:calc(100vh - 52px);flex-direction:column;gap:16px;text-align:center;padding:40px;">
+      <div style="font-size:56px;opacity:0.12;color:#196539;">&#11041;</div>
+      <div class="aurivian-placeholder-label">Link to Aurivian</div>
+      <p class="aurivian-placeholder-desc">This will link directly to your Aurivian dashboard or platform. Connect your account to see your internal data alongside Pulse external signal.</p>
+      <div class="aurivian-badge">Integration Pending</div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<!-- PERSONALIZATION OVERLAY -->
+<div id="overlay" onclick="handleOverlayClick(event)">
+  <div class="overlay-panel">
+    <div class="overlay-label">Personalize Your Brief</div>
+    <h2 class="overlay-heading">Tell us about yourself.</h2>
+    <p class="overlay-subtext">Help Pulse tailor the signal, framing, and field questions to what matters most for your role.</p>
+    <p class="overlay-prompt"><em>What is your role, your key therapeutic area, and what kinds of insights do you most need on a daily basis?</em></p>
+    <textarea class="overlay-textarea" placeholder="e.g. I'm the VP of Medical Affairs for Vyvgart in CIDP and gMG. I care most about competitive positioning, emerging patient narratives, and KOL activity..."></textarea>
+    <div class="overlay-buttons">
+      <button class="btn-skip" onclick="closePersona()">Skip for now</button>
+      <button class="btn-save" onclick="closePersona()">Save &amp; Personalize</button>
+    </div>
+    <p class="overlay-footer-note">Your responses are used only to personalize your Pulse experience and are never shared externally.</p>
+  </div>
+</div>
+
+<script>
+function toggleSidebar() {
+  const shell = document.getElementById('shell');
+  const btn = document.getElementById('sidebar-toggle');
+  const collapsed = shell.classList.toggle('collapsed');
+  btn.innerHTML = collapsed ? '&#8250;' : '&#8249;';
+}
+
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const view = document.getElementById('view-' + id);
+  if (view) view.classList.add('active');
+  if (id === 'brief') {
+    document.querySelectorAll('.nav-item')[0].classList.add('active');
+  }
+}
+
+function openPersona()  { document.getElementById('overlay').classList.add('open'); }
+function closePersona() { document.getElementById('overlay').classList.remove('open'); }
+function handleOverlayClick(e) { if (e.target === document.getElementById('overlay')) closePersona(); }
+</script>
+</body>
+</html>
