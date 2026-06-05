@@ -11,5 +11,5 @@ export const CLIENT = {
   logoSrc: null,
 };
 
-export const CAPTURE_APP_URL = null;
+export const CAPTURE_APP_URL = 'https://aurivian-argenx-capture-app.vercel.app';
 export const PULSE_BRIEF_URL = '/pulse_argenx_brief.html';
