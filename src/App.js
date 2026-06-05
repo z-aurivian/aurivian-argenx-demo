@@ -236,7 +236,7 @@ function Shell() {
                 <span>{item.label}</span>
               </NavLink>
             ))}
-            {CAPTURE_APP_URL && (
+            {CAPTURE_APP_URL ? (
               <a
                 href={CAPTURE_APP_URL}
                 target="_blank"
@@ -246,6 +246,11 @@ function Shell() {
                 <ExternalLink size={15} />
                 <span>Congress Capture</span>
               </a>
+            ) : (
+              <span className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-auri-border cursor-not-allowed opacity-50 select-none">
+                <ExternalLink size={15} />
+                <span>Congress Capture</span>
+              </span>
             )}
             {PULSE_BRIEF_URL && (
               <a

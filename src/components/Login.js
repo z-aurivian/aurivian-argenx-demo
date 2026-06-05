@@ -34,7 +34,7 @@ export default function Login({ onAuthenticated }) {
           <div className="mb-6">
             <h1 className="text-xl font-semibold text-auri-text mb-1">Sign in</h1>
             <p className="text-sm text-auri-muted">
-              {CLIENT?.name ? `Aurivian for ${CLIENT.name}` : 'Aurivian Intelligence Layer'}
+              {CLIENT?.name ? `Aurivian for ${CLIENT.name.charAt(0).toUpperCase() + CLIENT.name.slice(1)}` : 'Aurivian Intelligence Layer'}
             </p>
           </div>
 
