@@ -74,7 +74,7 @@ export default function CommandCenter() {
         <div className="flex items-center gap-2 mb-3">
           <Sparkles size={16} className="text-auri-blue" />
           <span className="text-sm font-medium text-auri-text">
-            {CLIENT?.name ? `${CLIENT.name} — ` : ''}what would you like to direct?
+            {CLIENT?.name ? `${CLIENT.name.charAt(0).toUpperCase() + CLIENT.name.slice(1)} — ` : ''}what would you like to direct?
           </span>
         </div>
         <form className="flex gap-2" onSubmit={(e) => {
