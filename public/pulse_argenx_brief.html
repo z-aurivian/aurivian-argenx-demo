@@ -1473,7 +1473,7 @@ body {
   </div>
   <button class="audio-close" onclick="closeAudio()" title="Close">&#215;</button>
 </div>
-<audio id="brief-audio" src="/pulse_brief_audio.mp3" preload="metadata"></audio>
+<audio id="brief-audio" src="pulse_brief_audio.mp3" preload="metadata"></audio>
 
 <!-- PERSONALIZATION OVERLAY -->
 <div id="overlay" onclick="handleOverlayClick(event)">
@@ -1547,16 +1547,18 @@ audio.addEventListener('ended', () => {
 
 function openAudio() {
   bar.classList.add('open');
-  audio.play();
-  icon.innerHTML = '&#9646;&#9646;';
-  document.getElementById('listen-btn').classList.add('playing');
+  audio.play().then(() => {
+    icon.innerHTML = '&#9646;&#9646;';
+    document.getElementById('listen-btn').classList.add('playing');
+  }).catch(err => console.warn('Audio play failed:', err));
 }
 
 function toggleAudio() {
   if (audio.paused) {
-    audio.play();
-    icon.innerHTML = '&#9646;&#9646;';
-    document.getElementById('listen-btn').classList.add('playing');
+    audio.play().then(() => {
+      icon.innerHTML = '&#9646;&#9646;';
+      document.getElementById('listen-btn').classList.add('playing');
+    }).catch(err => console.warn('Audio play failed:', err));
   } else {
     audio.pause();
     icon.innerHTML = '&#9654;';
