@@ -119,7 +119,39 @@ body {
   transition: background 0.15s;
 }
 .btn-listen:hover { background: var(--blue-glow); }
+.btn-listen.playing { background: var(--blue-glow); }
 .listen-dot { width: 5px; height: 5px; background: var(--blue); border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+
+/* Audio player bar */
+#audio-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 500;
+  background: var(--card); border-top: 1px solid var(--border-md);
+  padding: 10px 20px;
+  align-items: center; gap: 14px;
+}
+#audio-bar.open { display: flex; }
+.audio-play-btn {
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+  background: var(--blue); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.15s;
+}
+.audio-play-btn:hover { opacity: 0.85; }
+.audio-play-icon { font-size: 11px; color: #111; margin-left: 2px; }
+.audio-pause-icon { font-size: 11px; color: #111; }
+.audio-meta { display: flex; flex-direction: column; gap: 1px; min-width: 160px; }
+.audio-title { font-size: 11px; font-weight: 600; color: var(--text); }
+.audio-subtitle { font-size: 9px; color: var(--muted); }
+.audio-progress-wrap { flex: 1; display: flex; align-items: center; gap: 10px; }
+.audio-track { flex: 1; height: 3px; background: var(--border-md); border-radius: 2px; cursor: pointer; position: relative; }
+.audio-fill { height: 100%; background: var(--blue); border-radius: 2px; width: 0%; transition: width 0.25s linear; }
+.audio-time { font-size: 9px; color: var(--muted); white-space: nowrap; min-width: 70px; text-align: right; }
+.audio-close {
+  background: none; border: none; color: var(--muted); cursor: pointer;
+  font-size: 16px; line-height: 1; padding: 4px; transition: color 0.15s;
+}
+.audio-close:hover { color: var(--text); }
 @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
 .btn-persona {
@@ -512,7 +544,7 @@ body {
     <span class="topbar-date">Fri, June 5 2026</span>
   </div>
   <div class="topbar-right">
-    <button class="btn-listen" onclick="alert('Audio brief coming soon.')">
+    <button class="btn-listen" id="listen-btn" onclick="openAudio()">
       <span class="listen-dot"></span>&#9654;&nbsp;Listen
     </button>
     <button class="btn-persona" onclick="openPersona()">
@@ -1424,6 +1456,25 @@ body {
 </main>
 </div>
 
+<!-- AUDIO PLAYER BAR -->
+<div id="audio-bar">
+  <button class="audio-play-btn" onclick="toggleAudio()" id="play-btn">
+    <span class="audio-play-icon" id="play-icon">&#9654;</span>
+  </button>
+  <div class="audio-meta">
+    <div class="audio-title">Pulse Brief · June 5, 2026</div>
+    <div class="audio-subtitle">argenx Medical Intelligence · 1 min 45 sec</div>
+  </div>
+  <div class="audio-progress-wrap">
+    <div class="audio-track" onclick="scrubAudio(event)" id="audio-track">
+      <div class="audio-fill" id="audio-fill"></div>
+    </div>
+    <span class="audio-time" id="audio-time">0:00 / 1:45</span>
+  </div>
+  <button class="audio-close" onclick="closeAudio()" title="Close">&#215;</button>
+</div>
+<audio id="brief-audio" src="/pulse_brief_audio.mp3" preload="metadata"></audio>
+
 <!-- PERSONALIZATION OVERLAY -->
 <div id="overlay" onclick="handleOverlayClick(event)">
   <div class="overlay-panel">
@@ -1468,6 +1519,65 @@ function switchBrief(card, briefId) {
   if (bc) bc.classList.add('active');
   showView('brief', document.getElementById('nav-brief'));
   document.getElementById('main').scrollTop = 0;
+}
+
+// ── AUDIO PLAYER ──────────────────────────────
+const audio = document.getElementById('brief-audio');
+const bar   = document.getElementById('audio-bar');
+const fill  = document.getElementById('audio-fill');
+const timeEl= document.getElementById('audio-time');
+const icon  = document.getElementById('play-icon');
+
+function fmt(s) {
+  const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+audio.addEventListener('timeupdate', () => {
+  if (!audio.duration) return;
+  const pct = (audio.currentTime / audio.duration) * 100;
+  fill.style.width = pct + '%';
+  timeEl.textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration);
+});
+
+audio.addEventListener('ended', () => {
+  icon.innerHTML = '&#9654;';
+  document.getElementById('listen-btn').classList.remove('playing');
+});
+
+function openAudio() {
+  bar.classList.add('open');
+  audio.play();
+  icon.innerHTML = '&#9646;&#9646;';
+  document.getElementById('listen-btn').classList.add('playing');
+}
+
+function toggleAudio() {
+  if (audio.paused) {
+    audio.play();
+    icon.innerHTML = '&#9646;&#9646;';
+    document.getElementById('listen-btn').classList.add('playing');
+  } else {
+    audio.pause();
+    icon.innerHTML = '&#9654;';
+    document.getElementById('listen-btn').classList.remove('playing');
+  }
+}
+
+function closeAudio() {
+  audio.pause();
+  audio.currentTime = 0;
+  bar.classList.remove('open');
+  icon.innerHTML = '&#9654;';
+  fill.style.width = '0%';
+  document.getElementById('listen-btn').classList.remove('playing');
+}
+
+function scrubAudio(e) {
+  const track = document.getElementById('audio-track');
+  const rect = track.getBoundingClientRect();
+  const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  audio.currentTime = pct * audio.duration;
 }
 
 function openPersona()  { document.getElementById('overlay').classList.add('open'); }
