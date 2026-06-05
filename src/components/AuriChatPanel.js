@@ -122,7 +122,7 @@ export default function AuriChatPanel({
             </h2>
             {!compact && (
               <p className="text-auri-muted mb-6 max-w-lg text-sm">
-                Grounded in your Intelligence Layer for {CLIENT.name}
+                Grounded in your Intelligence Layer for {CLIENT.name ? CLIENT.name.charAt(0).toUpperCase() + CLIENT.name.slice(1) : ''}
                 {productName ? <> — currently scoped to <span className="text-auri-blue font-medium">{productName}</span></> : null}.
               </p>
             )}
