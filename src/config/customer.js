@@ -12,3 +12,4 @@ export const CLIENT = {
 };
 
 export const CAPTURE_APP_URL = 'https://aurivian-capture-demo.vercel.app';
+export const PULSE_BRIEF_URL = '/pulse_argenx_brief.html';
