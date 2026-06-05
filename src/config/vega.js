@@ -1,91 +1,80 @@
-// VEGA — Strategic Analytics agent.
-// Implements the "must-have" measures from the Aurivian extended analytics
-// document (Vision Doc, Strategic Analytics, Section 5).
-//
-// Default fill: Alexion (template example). Overwrite per demo.
+// VEGA — Strategic Analytics agent — argenx demo.
+// FcRn platform — gMG SC modality transition and CIDP earlier-line positioning are the headline VEGA story.
 
-// 1.1 HCP Awareness Progression — movement of HCPs along the awareness ladder.
 export const VEGA_AWARENESS_PROGRESSION = {
-  benchmark: '37% of HCPs achieving sustained practice change vs 22% industry average — +68% outperformance. Slowest conversion: Knowledgeable → Intent (68%, avg 47 days). Primary blocker: reimbursement barriers. Recommended action: expedite reimbursement support tools for MSL deployment.',
+  benchmark: '34% of target HCPs achieving sustained practice change vs 22% industry average — +55% outperformance. Slowest conversion: Knowledgeable → Intent (58%, avg 61 days). Primary blocker: SC self-injection training infrastructure gaps at community neurology practices. Recommended action: deploy SC training resource kit to community neurology networks and GBS/CIDP Foundation channels.',
   stages: [
-    { stage: 'Sustained practice change', hcps: 546,  pctTotal: 37, vsQ4: '+12%' },
-    { stage: 'Actively changing practice', hcps: 613,  pctTotal: 42, vsQ4: '+8%'  },
-    { stage: 'Intent to change',           hcps: 863,  pctTotal: 59, vsQ4: '+5%'  },
-    { stage: 'Knowledgeable',              hcps: 1269, pctTotal: 87, vsQ4: '+4%'  },
-    { stage: 'Aware only',                 hcps: 436,  pctTotal: 30, vsQ4: '-14%' },
+    { stage: 'Sustained practice change', hcps: 367,  pctTotal: 34, vsQ4: '+11%' },
+    { stage: 'Actively changing practice', hcps: 484,  pctTotal: 45, vsQ4: '+13%' },
+    { stage: 'Intent to change',           hcps: 624,  pctTotal: 58, vsQ4: '+8%'  },
+    { stage: 'Knowledgeable',              hcps: 891,  pctTotal: 83, vsQ4: '+6%'  },
+    { stage: 'Aware only',                 hcps: 341,  pctTotal: 32, vsQ4: '-6%'  },
   ],
 };
 
-// 1.2 Interaction Quality vs Quantity — by MSL/Region.
 export const VEGA_INTERACTION_QUALITY = {
-  insight: 'James T shows high interaction volume but low quality — conversations are not generating usable insights or HCP stage progression. Likely cause: off-KIQ conversations. Recommended: targeted KIQ briefing and joint field visit. Priya K shows both volume and quality gaps — regional manager review recommended.',
+  insight: 'Marcus T shows high interaction volume but below-average insight capture rate — MSL conversations are generating competitive differentiation opportunities that are not being documented for cross-regional sharing. Sarah K shows excellent quality and FcRn competitor alignment. Recommended: MSL training on LP3 competitor differentiation protocol.',
   rows: [
-    { msl: 'Sarah M',  region: 'London',     interactions: 47, vsTarget: '+5%',  quality: 8.7, insightRate: 81, overall: 'Excellent' },
-    { msl: 'James T',  region: 'Midlands',   interactions: 52, vsTarget: '+16%', quality: 6.1, insightRate: 44, overall: 'Quality gap' },
-    { msl: 'Anna R',   region: 'North',      interactions: 38, vsTarget: '-15%', quality: 9.1, insightRate: 92, overall: 'Volume gap' },
-    { msl: 'David L',  region: 'Scotland',   interactions: 41, vsTarget: '+2%',  quality: 8.4, insightRate: 78, overall: 'On track' },
-    { msl: 'Priya K',  region: 'South West', interactions: 29, vsTarget: '-36%', quality: 5.2, insightRate: 31, overall: 'Needs support' },
+    { msl: 'Sarah K',    region: 'Northeast',  interactions: 47, vsTarget: '+12%', quality: 9.0, insightRate: 84, overall: 'Excellent'     },
+    { msl: 'Marcus T',   region: 'Southeast',  interactions: 54, vsTarget: '+24%', quality: 6.1, insightRate: 38, overall: 'Quality gap'   },
+    { msl: 'Elena M',    region: 'Midwest',    interactions: 39, vsTarget: '-5%',  quality: 8.4, insightRate: 77, overall: 'Volume gap'    },
+    { msl: 'James W',    region: 'West',       interactions: 44, vsTarget: '+7%',  quality: 8.1, insightRate: 72, overall: 'On track'      },
+    { msl: 'Priya D',    region: 'South',      interactions: 28, vsTarget: '-28%', quality: 5.9, insightRate: 33, overall: 'Needs support' },
   ],
 };
 
-// 1.3 Engagement Gap Tracker — Tier 1/2 KOLs not contacted within window.
 export const VEGA_ENGAGEMENT_GAPS = [
-  { kol: 'Dr. James Okonkwo', tier: 'Tier 2', lastContact: '2025-03-12', gap: '6 weeks', action: 'Re-engage urgently' },
-  { kol: 'Prof. Linda Walsh', tier: 'Tier 1', lastContact: '2025-03-28', gap: '4 weeks', action: 'Schedule soon' },
-  { kol: 'Dr. Ahmed Hassan',  tier: 'Tier 2', lastContact: '2025-04-02', gap: '3 weeks', action: 'Plan interaction' },
-  { kol: 'Dr. Yuki Tanaka',   tier: 'Tier 1', lastContact: '2025-04-14', gap: '1 week',  action: 'On track' },
+  { kol: 'Dr. David Lacomis',     tier: 'Tier 2', lastContact: '2026-03-31', gap: '9 weeks', action: 'Re-engage urgently — public-private divergence on SC transition detected' },
+  { kol: 'Dr. Paul Cockwell',     tier: 'Tier 2', lastContact: '2026-04-14', gap: '7 weeks', action: 'Re-engage before ERA 2025 — empasiprubart pipeline briefing needed' },
+  { kol: 'Dr. Fernando Fervenza', tier: 'Tier 1', lastContact: '2026-05-01', gap: '5 weeks', action: 'Schedule MN FcRn scientific exchange before ASN 2025 abstract deadline' },
+  { kol: 'Dr. Susan Manzi',       tier: 'Tier 1', lastContact: '2026-05-19', gap: '2 weeks', action: 'On track — empasiprubart SLE/LN data package ready for delivery' },
 ];
 
-// 2.1 Share of Scientific Voice — vs competitors.
 export const VEGA_SHARE_OF_VOICE = {
-  watchArea: 'Social and digital share of voice declining (-3pts) while Competitor B is growing (+7pts). Recommend reviewing digital scientific communication strategy.',
+  watchArea: 'Vyvgart Hytrulo SC share of voice growing (+31pts in 90 days) in gMG and CIDP discussions, but Rystiggo is generating increasing competitive noise post-SC approval (+18pts). FcRn class-wide interest is at a 3-year high. Recommend accelerating KOL co-creation on SC modality differentiation content ahead of AAN 2025 abstract season.',
   rows: [
-    { source: 'Congress abstracts (CROI 2025)', us: '38%',  compA: '28%', compB: '22%', compC: '12%', trend: 'up' },
-    { source: 'Peer-reviewed publications (12m)', us: '34%', compA: '31%', compB: '24%', compC: '11%', trend: 'flat' },
-    { source: 'KOL active endorsements',         us: '41%',  compA: '24%', compB: '26%', compC: '9%',  trend: 'up' },
-    { source: 'Citation index (vs competitors)', us: '2.3×', compA: '1.8×', compB: '1.4×', compC: '0.9×', trend: 'up' },
-    { source: 'Social / digital mentions',       us: '22%',  compA: '19%', compB: '34%', compC: '25%', trend: 'down' },
+    { source: 'Congress abstracts (AAN/EAN 2025)',    us: '52%', compA: '28%', compB: '14%', compC: '6%',  trend: 'up'   },
+    { source: 'Peer-reviewed publications (12m)',     us: '41%', compA: '31%', compB: '19%', compC: '9%',  trend: 'up'   },
+    { source: 'KOL active endorsements',              us: '57%', compA: '24%', compB: '13%', compC: '6%',  trend: 'up'   },
+    { source: 'X / LinkedIn mentions (gMG/CIDP)',     us: '44%', compA: '38%', compB: '12%', compC: '6%',  trend: 'flat' },
+    { source: 'Patient advocacy channels (SC/home)',  us: '63%', compA: '19%', compB: '11%', compC: '7%',  trend: 'up'   },
   ],
 };
 
-// 2.2 KOL Sentiment Velocity — rate-of-change of alignment.
 export const VEGA_SENTIMENT_VELOCITY = [
-  { kol: 'Prof. Sarah Mitchell', score: 89, change30d: '+4.2', velocity: '+1.1 ↑↑', interpretation: 'Positive acceleration — advisory board candidate' },
-  { kol: 'Dr. James Okonkwo',    score: 61, change30d: '-3.8', velocity: '-1.4 ↓↓', interpretation: 'Worsening faster — urgent re-engagement, risk of competitor capture' },
-  { kol: 'Dr. Linda Walsh',      score: 77, change30d: '+1.2', velocity: '-0.6 ⚠',  interpretation: 'Momentum slowing — still improving but decelerating' },
-  { kol: 'Prof. Ahmed Hassan',   score: 82, change30d: '+2.1', velocity: '+0.3 ↑',  interpretation: 'Steady positive — maintain current cadence' },
+  { kol: 'Gil Wolfe',          score: 88, change30d: '+2.8', velocity: '+1.1 ↑↑', interpretation: 'Strongly positive — AAN advisory board anchor; SC modality leadership narrative well-received' },
+  { kol: 'David Lacomis',      score: 48, change30d: '-9.2', velocity: '-2.3 ↓↓', interpretation: 'Worsening fast — public SC scepticism vs private positivity divergence; urgent re-engagement needed' },
+  { kol: 'Angela Vincent',     score: 86, change30d: '+1.9', velocity: '+0.7 ↑',  interpretation: 'Steady positive — FcRn biology alignment strong; prioritise European KOL amplification at EAN' },
+  { kol: 'David Kuter',        score: 84, change30d: '+1.3', velocity: '+0.5 ↑',  interpretation: 'Stable — ITP FcRn positioning robust; IMAAVY readout may create near-term differentiation need' },
 ];
 
-// 4.1 Care Gap Closure Tracking — patient-level outcome of MA activity.
 export const VEGA_CARE_GAP_CLOSURE = [
-  { gap: 'Biomarker testing rate',   linkedMO: 'MO1',     baseline: '34%',     current: '57% (+23pts)',  patientsImpacted: '2,340 additional patients tested' },
-  { gap: 'Time to treatment',        linkedMO: 'MO1+2',   baseline: '28 days', current: '21 days (-7d)', patientsImpacted: '1,567 patients faster treatment' },
-  { gap: 'Appropriate pt. selection', linkedMO: 'MO2',    baseline: '23% off', current: '12% off (-11pts)', patientsImpacted: '890 patients better selected' },
+  { gap: 'IVIg-to-SC transition rate at community neurology', linkedMO: 'MO1',  baseline: '21%',     current: '34% (+13pts)',    patientsImpacted: '~280 additional patients accessing home SC per quarter' },
+  { gap: 'Time to CIDP FcRn treatment (diagnosis → Rx)',      linkedMO: 'MO2',  baseline: '9.4 wks', current: '7.1 wks (-2.3w)', patientsImpacted: '~160 patients receiving earlier targeted therapy' },
+  { gap: 'Vyvgart Hytrulo HCP awareness (community neuro)',   linkedMO: 'MO4',  baseline: '31%',     current: '54% (+23pts)',    patientsImpacted: 'SC modality access expanding beyond academic centres' },
 ];
 
-// 4.2 ROMI — financial framing.
 export const VEGA_ROMI = {
-  netValueCreated: '£15.2M',
-  roiPct: '185%',
-  returnPerPound: '£2.85',
+  netValueCreated: '$21.3M',
+  roiPct: '+238%',
+  returnPerPound: '$3.38',
   rows: [
-    { category: 'Prescription growth attributed to MA', value: '£12.4M', methodology: 'HCPs with high MA engagement show 2.1× higher prescribing — difference-in-difference analysis' },
-    { category: 'Health system efficiency (avoided costs)', value: '£4.2M', methodology: 'Reduced treatment delays, better patient selection, fewer prior authorisation denials' },
-    { category: 'Competitive revenue protection', value: '£6.8M', methodology: 'Estimated prescribing prevented from switching to competitors' },
-    { category: 'Total investment', value: '-£8.2M', methodology: 'Full Medical Affairs budget — field team, advisory boards, congress, content' },
+    { category: 'Vyvgart Hytrulo SC prescription growth attributed to MA', value: '$13.1M', methodology: 'HCPs with high MSL engagement show 2.7× higher SC conversion rate — difference-in-difference vs matched controls' },
+    { category: 'CIDP earlier-line treatment access (IVIg gap)',           value: '$4.4M',  methodology: 'Incremental patients receiving Hytrulo as first targeted therapy through earlier-line messaging; avg treatment value applied' },
+    { category: 'FcRn pipeline HCP priming (empasiprubart)',               value: '$6.1M',  methodology: 'Estimated launch-quarter revenue uplift from pre-launch KOL engagement in nephrology (LN/MN) and neuroimmunology' },
+    { category: 'Total MA investment',                                     value: '-$4.3M', methodology: 'Full Medical Affairs budget — field team, advisory boards, congress, scientific exchange, content' },
   ],
 };
 
-// 4.3 Medical Affairs Impact Index — composite executive headline metric.
 export const VEGA_IMPACT_INDEX = {
-  overall: 82,
-  vsQ4: '+7',
-  target: 80,
+  overall: 76,
+  vsQ4: '+12',
+  target: 82,
   dimensions: [
-    { dim: 'Execution excellence',     score: 87, commentary: 'Above target — field interactions, content, advisory boards all exceeding benchmarks' },
-    { dim: 'External ecosystem impact', score: 84, commentary: '+21% KOL network expansion, +18% total HCP engagement, share of voice up to 38%' },
-    { dim: 'HCP practice change',      score: 81, commentary: '37% sustained change vs 22% industry average — strong outperformance' },
-    { dim: 'Patient care gap closure', score: 79, commentary: 'Biomarker testing +23pts, treatment delay -7 days, appropriate selection +11pts' },
-    { dim: 'Internal ecosystem impact', score: 78, commentary: 'Clinical Development collaboration below potential — key improvement opportunity' },
+    { dim: 'Execution excellence',      score: 83, commentary: 'MSL interaction volume above target; quality gap in Southeast region being addressed with LP3 competitor differentiation protocol' },
+    { dim: 'External ecosystem impact', score: 81, commentary: '+22% KOL network expansion including 3 emerging CIDP digital influencers; 2 new FcRn pipeline nephrology KOLs mapped' },
+    { dim: 'HCP practice change',       score: 77, commentary: '34% sustained SC practice change vs 22% industry average; CIDP earlier-line positioning is the primary growth driver' },
+    { dim: 'Patient care gap closure',  score: 73, commentary: 'IVIg-to-SC conversion +13pts, CIDP time-to-treatment -2.3 weeks; empasiprubart pipeline engagement baseline established' },
+    { dim: 'Social signal intelligence', score: 64, commentary: 'New capability — social listening tracking 19 HCP accounts and 4 patient advocacy communities; LP3 competitor alignment protocol in rollout' },
   ],
 };

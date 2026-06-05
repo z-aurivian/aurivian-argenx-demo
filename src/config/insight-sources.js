@@ -1,23 +1,21 @@
-// Insight Source Value Matrix — NOVA's "Insight Sources & Impact" tab.
-// Quantifies the value of each insight-source channel: volume,
-// quality, leads-to-action, cost, and an aggregated ROI score.
-//
-// Default fill: Alexion (template example). Overwrite per demo.
+// Insight Source Value Matrix — argenx demo.
+// IVIg transition and FcRn competitor signals are the headline sources.
 
 export const INSIGHT_SOURCES = [
-  { id: 'is-1', source: 'MSL Field Reports',  volume: 1243, qualityScore: 82, leadsToActionPct: 41, costPerInsight: 187,  roiScore: 7.8 },
-  { id: 'is-2', source: 'Advisory Boards',    volume: 47,   qualityScore: 94, leadsToActionPct: 72, costPerInsight: 4250, roiScore: 8.5 },
-  { id: 'is-3', source: 'Congress Feedback',  volume: 312,  qualityScore: 76, leadsToActionPct: 34, costPerInsight: 890,  roiScore: 6.2 },
-  { id: 'is-4', source: 'Med Info Inquiries', volume: 876,  qualityScore: 68, leadsToActionPct: 22, costPerInsight: 45,   roiScore: 7.1 },
-  { id: 'is-5', source: 'Social Listening',   volume: 4521, qualityScore: 41, leadsToActionPct: 8,  costPerInsight: 12,   roiScore: 4.4 },
+  { id: 'is-1', source: 'MSL Field Reports',            volume: 912,  qualityScore: 81, leadsToActionPct: 41, costPerInsight: 195,  roiScore: 7.6 },
+  { id: 'is-2', source: 'Advisory Boards',               volume: 38,   qualityScore: 94, leadsToActionPct: 74, costPerInsight: 4600, roiScore: 8.5 },
+  { id: 'is-3', source: 'Congress Feedback',             volume: 264,  qualityScore: 76, leadsToActionPct: 34, costPerInsight: 870,  roiScore: 6.3 },
+  { id: 'is-4', source: 'Med Info Inquiries',            volume: 538,  qualityScore: 68, leadsToActionPct: 21, costPerInsight: 49,   roiScore: 7.0 },
+  { id: 'is-5', source: 'X / LinkedIn Social Listening', volume: 4817, qualityScore: 56, leadsToActionPct: 24, costPerInsight: 9,    roiScore: 8.1 },
+  { id: 'is-6', source: 'Patient Advocacy Monitoring',   volume: 2134, qualityScore: 47, leadsToActionPct: 16, costPerInsight: 7,    roiScore: 6.7 },
 ];
 
-// KIT Relevance Trend — 6-month relevance score per KIT.
+// KIT Relevance Trend — 6-month relevance score per argenx KIT.
 export const KIT_RELEVANCE_TREND = [
-  { month: 'Nov 2025', 'Biosimilar Switching': 88, 'Complement Education': 74, 'BTH Mgmt': 79, 'Oral Competitor': 83, 'Diagnosis & Referral': 69 },
-  { month: 'Dec 2025', 'Biosimilar Switching': 90, 'Complement Education': 73, 'BTH Mgmt': 82, 'Oral Competitor': 86, 'Diagnosis & Referral': 68 },
-  { month: 'Jan 2026', 'Biosimilar Switching': 91, 'Complement Education': 72, 'BTH Mgmt': 85, 'Oral Competitor': 88, 'Diagnosis & Referral': 67 },
-  { month: 'Feb 2026', 'Biosimilar Switching': 93, 'Complement Education': 71, 'BTH Mgmt': 86, 'Oral Competitor': 89, 'Diagnosis & Referral': 67 },
-  { month: 'Mar 2026', 'Biosimilar Switching': 94, 'Complement Education': 72, 'BTH Mgmt': 88, 'Oral Competitor': 91, 'Diagnosis & Referral': 67 },
-  { month: 'Apr 2026', 'Biosimilar Switching': 94, 'Complement Education': 72, 'BTH Mgmt': 88, 'Oral Competitor': 91, 'Diagnosis & Referral': 67 },
+  { month: 'Jan 2026', 'IVIg-to-SC Transition': 62, 'CIDP Earlier-Line': 54, 'SC Self-Injection Confidence': 58, 'FcRn Competitor Diff.': 51, 'Payer Site-of-Care': 44 },
+  { month: 'Feb 2026', 'IVIg-to-SC Transition': 68, 'CIDP Earlier-Line': 60, 'SC Self-Injection Confidence': 63, 'FcRn Competitor Diff.': 58, 'Payer Site-of-Care': 49 },
+  { month: 'Mar 2026', 'IVIg-to-SC Transition': 74, 'CIDP Earlier-Line': 67, 'SC Self-Injection Confidence': 69, 'FcRn Competitor Diff.': 67, 'Payer Site-of-Care': 55 },
+  { month: 'Apr 2026', 'IVIg-to-SC Transition': 82, 'CIDP Earlier-Line': 74, 'SC Self-Injection Confidence': 73, 'FcRn Competitor Diff.': 79, 'Payer Site-of-Care': 62 },
+  { month: 'May 2026', 'IVIg-to-SC Transition': 89, 'CIDP Earlier-Line': 82, 'SC Self-Injection Confidence': 76, 'FcRn Competitor Diff.': 87, 'Payer Site-of-Care': 69 },
+  { month: 'Jun 2026', 'IVIg-to-SC Transition': 96, 'CIDP Earlier-Line': 91, 'SC Self-Injection Confidence': 78, 'FcRn Competitor Diff.': 93, 'Payer Site-of-Care': 74 },
 ];

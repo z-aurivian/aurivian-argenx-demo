@@ -1,23 +1,29 @@
-// Gap Radar — Demo Brief §9.
-// Default fill: Alexion template. Overwrite per demo.
+// Gap Radar — argenx demo.
+// Surfaces unmet LP / KIQ / KIT needs against MO coverage.
 
 export const GAP_RADAR = [
   {
     type: 'New LP',
-    moRef: 'MO4',
-    suggestion: 'Complement biology scientific exchange — mechanistic differentiation vs next-gen agents',
-    rationale: 'MO4 (scientific exchange) has 0 qualifying insights this cycle (Gap). Current LPs don’t cover mechanistic-differentiation conversations where they are happening.',
-  },
-  {
-    type: 'New KIQ',
-    moRef: 'MO1',
-    suggestion: '“What pediatric dosing confidence gap remains between registry data and community practice?”',
-    rationale: 'Pediatric aHUS insight (AI5) is isolated — no LP currently triangulates pediatric dosing confidence. Low coverage in MO1 overall.',
+    moRef: 'MO3',
+    suggestion: 'FcRn competitor differentiation LP — Rystiggo vs IMAAVY head-to-head scientific exchange guide',
+    rationale: 'MO3 (competitive differentiation) is rated Gap. Rystiggo SC approval and IMAAVY Phase 3 data are generating direct HCP comparison requests that no current LP addresses.',
   },
   {
     type: 'New KIT',
     moRef: 'MO2',
-    suggestion: 'Patient-facing switch-stability one-pager (co-created with community HCPs)',
-    rationale: 'Recurring community-center request across AI1 and AI4. KIT library currently lacks patient-facing material.',
+    suggestion: 'SC home administration cost-offset model (site-of-care economics KIT)',
+    rationale: 'Payer budget impact discussions are growing (KIT-5) and 3 major PBM medical directors have requested site-of-care cost models. No current KIT supports this conversation.',
+  },
+  {
+    type: 'New KIQ',
+    moRef: 'MO4',
+    suggestion: '"What is the minimum IgG reduction threshold required for sustained clinical response in CIDP?"',
+    rationale: 'CIDP earlier-line positioning (KIT-2) is accelerating but no qualifying KIQ currently targets the depth-of-IgG-reduction question driving ADHERE study discussions.',
+  },
+  {
+    type: 'New LP',
+    moRef: 'MO3',
+    suggestion: 'Empasiprubart pipeline LP for nephrology KOLs — LN and MN FcRn mechanism briefing',
+    rationale: 'Pipeline KOLs (Rovin, Fervenza, Cockwell) are low-engagement with no current LP covering empasiprubart Phase 3 rationale for nephrologists ahead of ASN 2025.',
   },
 ];
