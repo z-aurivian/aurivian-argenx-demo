@@ -25,8 +25,8 @@ export const VEGA_INTERACTION_QUALITY = {
 
 export const VEGA_ENGAGEMENT_GAPS = [
   { kol: 'Dr. David Lacomis',     tier: 'Tier 2', lastContact: '2026-03-31', gap: '9 weeks', action: 'Re-engage urgently — public-private divergence on SC transition detected' },
-  { kol: 'Dr. Paul Cockwell',     tier: 'Tier 2', lastContact: '2026-04-14', gap: '7 weeks', action: 'Re-engage before ERA 2025 — empasiprubart pipeline briefing needed' },
-  { kol: 'Dr. Fernando Fervenza', tier: 'Tier 1', lastContact: '2026-05-01', gap: '5 weeks', action: 'Schedule MN FcRn scientific exchange before ASN 2025 abstract deadline' },
+  { kol: 'Dr. Paul Cockwell',     tier: 'Tier 2', lastContact: '2026-04-14', gap: '7 weeks', action: 'Re-engage before ERA 2026 — empasiprubart pipeline briefing needed' },
+  { kol: 'Dr. Fernando Fervenza', tier: 'Tier 1', lastContact: '2026-05-01', gap: '5 weeks', action: 'Schedule MN FcRn scientific exchange before ASN 2026 abstract deadline' },
   { kol: 'Dr. Susan Manzi',       tier: 'Tier 1', lastContact: '2026-05-19', gap: '2 weeks', action: 'On track — empasiprubart SLE/LN data package ready for delivery' },
 ];
 
