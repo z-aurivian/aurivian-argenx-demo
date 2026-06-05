@@ -195,6 +195,8 @@ body {
 #main { grid-area: main; overflow-y: auto; background: var(--bg); }
 .view { display: none; }
 .view.active { display: block; }
+.brief-content { display: none; }
+.brief-content.active { display: block; }
 
 /* ── BRIEF VIEW ────────────────────────────── */
 #view-brief { max-width: 780px; margin: 0 auto; padding: 28px 36px 80px; }
@@ -526,30 +528,30 @@ body {
 <nav id="sidebar">
   <div class="sidebar-inner">
     <div class="sidebar-section-label">This Week</div>
-    <div class="brief-card active" onclick="switchBrief(this, 'brief')">
+    <div class="brief-card active" onclick="switchBrief(this, 'ivt')">
       <div class="new-dot"></div>
       <div class="brief-card-title">IVIg Transition Risk &amp; SC Autonomy</div>
       <div class="brief-card-meta">Jun 5 · 5 signals</div>
     </div>
-    <div class="brief-card" onclick="switchBrief(this, 'brief')">
+    <div class="brief-card" onclick="switchBrief(this, 'payer')">
       <div class="brief-card-title">Payer Budget Impact Model</div>
       <div class="brief-card-meta">Jun 3 · 2 signals</div>
     </div>
-    <div class="brief-card" onclick="switchBrief(this, 'brief')">
+    <div class="brief-card" onclick="switchBrief(this, 'adhere')">
       <div class="brief-card-title">Post-AAN 2026 ADHERE Signal</div>
       <div class="brief-card-meta">Jun 1 · 3 signals</div>
     </div>
     <div class="sidebar-rule"></div>
     <div class="sidebar-section-label">Last Month</div>
-    <div class="brief-card" onclick="switchBrief(this, 'brief')">
+    <div class="brief-card" onclick="switchBrief(this, 'adapt')">
       <div class="brief-card-title">ADAPT OCULUS: Phase 3 Positive</div>
       <div class="brief-card-meta">May 12</div>
     </div>
-    <div class="brief-card" onclick="switchBrief(this, 'brief')">
+    <div class="brief-card" onclick="switchBrief(this, 'rystiggo')">
       <div class="brief-card-title">Rystiggo SC Approval — CIDP Signal</div>
       <div class="brief-card-meta">May 10</div>
     </div>
-    <div class="brief-card" onclick="switchBrief(this, 'brief')">
+    <div class="brief-card" onclick="switchBrief(this, 'imaavy')">
       <div class="brief-card-title">IMAAVY withMe Programme Confirmed</div>
       <div class="brief-card-meta">Apr 28</div>
     </div>
@@ -569,7 +571,7 @@ body {
 
   <!-- ══ VIEW: MORNING BRIEF ══════════════════ -->
   <div id="view-brief" class="view active">
-  <div id="view-brief-inner" style="max-width:780px;margin:0 auto;padding:28px 36px 80px;">
+  <div id="brief-ivt" class="brief-content active" style="max-width:780px;margin:0 auto;padding:28px 36px 80px;">
 
     <div class="brief-eyebrow">
       <span class="tag tag-outline">Intelligence Brief</span>
@@ -793,8 +795,379 @@ body {
       <div class="footer-sources"><strong>Sources</strong> &nbsp;·&nbsp; Pharmacy Times · NeurologyLive · Practical Neurology · GlobeNewswire · Medscape · Curr Treat Options Neurol · Adv Therapy &nbsp;&middot;&nbsp; Prepared for: VP of Medical Affairs</div>
       <div class="footer-disc">All sources external and public. No proprietary argenx data used. Internal use only.</div>
     </div>
-  </div>
-  </div>
+  </div><!-- /brief-ivt -->
+
+  <!-- ══ BRIEF: PAYER BUDGET IMPACT ═══════════ -->
+  <div id="brief-payer" class="brief-content" style="max-width:780px;margin:0 auto;padding:28px 36px 80px;">
+    <div class="brief-eyebrow">
+      <span class="tag tag-outline">Intelligence Brief</span>
+      <span class="tag tag-product">Access &amp; Reimbursement</span>
+      <span class="eyebrow-date">June 3, 2026 &middot; 7:15 AM ET</span>
+    </div>
+    <h1 class="brief-headline">A 35% budget impact model has entered payer P&amp;T channels. Prior authorization for CIDP — <em>which didn't exist 12 months ago</em> — is being drafted now.</h1>
+    <p class="brief-lede">Two signals are converging this week on the access front. The AANEM 2025 budget impact model, projecting a 35.5% increase in healthcare spending at 10% CIDP uptake, is circulating in payer channels. Separately, prior authorization language for efgartigimod in CIDP — not present in any major plan a year ago — is now being drafted at multiple commercial payers.</p>
+    <div class="brief-meta">
+      <div class="meta-item"><span class="meta-label">Signal Type</span><span class="meta-value warn">&#9679; Payer · Access</span></div>
+      <div class="meta-item"><span class="meta-label">Signals</span><span class="meta-value dim">2 Active</span></div>
+      <div class="meta-item"><span class="meta-label">Priority</span><span class="meta-value warn">High · Urgent</span></div>
+      <div class="meta-item"><span class="meta-label">Date</span><span class="meta-value dim">June 3, 2026</span></div>
+    </div>
+    <div class="situation-room">
+      <div class="situation-label">&#9679; Situation Room &nbsp;&middot;&nbsp; 2 Active Signals</div>
+      <p class="situation-body"><strong>The access picture:</strong> A budget impact model developed by Betsy Lahue (Alkemi) and presented at AANEM 2025 calculated a 35.5% projected increase in healthcare spending for a 25-million-member plan assuming 10% efgartigimod uptake in CIDP year one. That model is now in payer channels. The consequence is prior authorization requirements for CIDP that are being drafted for the first time — not yet in place at most plans, but coming. The window to establish favorable formulary positioning is closing.</p>
+    </div>
+    <div class="brief-section" style="animation-delay:0.05s">
+      <div class="section-number"><span class="section-num">01</span><span class="section-cat">Payers · Budget Model</span></div>
+      <h2 class="section-h2">The 35.5% budget impact model is the number in every P&amp;T meeting now. <em>Field medical needs to be ready to counter it.</em></h2>
+      <div class="pills"><span class="pill pill-hot">&#8593; Accelerating</span><span class="pill pill-watch">Budget Impact Signal</span></div>
+      <p class="section-body">The Alkemi model, presented at AANEM 2025, modeled the per-member-per-month cost increase of efgartigimod adoption in CIDP across a 25-million-member commercial plan. At 10% uptake in year one, both scenarios modeled produced near-identical results: a 35.5% projected increase in CIDP-related spending. This model has moved from academic presentation to active payer discussion. P&T committee language at multiple commercial payers now references the model explicitly.</p>
+      <div class="pull-quote">
+        <p class="pull-quote-text">"A 35% budget impact is significant enough that payers will respond with utilization management. The question is whether the clinical benefit story is strong enough to push back against step-therapy requirements."</p>
+        <span class="pull-quote-cite">— Betsy Lahue MPH, Alkemi &middot; AANEM 2025 &middot; NeurologyLive, Feb 2026</span>
+      </div>
+      <div class="sources">
+        <a class="source-chip" href="https://www.neurologylive.com/view/efgartigimod-treatment-cidp-leads-increased-spending-study-shows" target="_blank">NeurologyLive Budget Impact</a>
+        <a class="source-chip" href="https://link.springer.com/article/10.1007/s11940-026-00869-7" target="_blank">Curr Treat Options Neurol</a>
+      </div>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">Are payers in your geography referencing budget impact data in P&T discussions about Vyvgart Hytrulo for CIDP — and have any plans moved from step-therapy language to formal prior authorization requirements?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="brief-section" style="animation-delay:0.10s">
+      <div class="section-number"><span class="section-num">02</span><span class="section-cat">Payers · Prior Authorization</span></div>
+      <h2 class="section-h2">Prior auth requirements for CIDP are being drafted. <em>The value narrative needs to be in the field before these go live.</em></h2>
+      <div class="pills"><span class="pill pill-alert">&#9650; New Development</span><span class="pill pill-watch">Access Barrier</span></div>
+      <p class="section-body">Prior authorization requirements for efgartigimod in CIDP did not exist at most commercial payers 12 months ago. They are now being drafted. The structural argument against step therapy is durable response with a favorable tolerability profile — but the SC home administration cost offset vs. IV infusion center is the health economics argument that carries the most weight in utilization management conversations. The ADHERE durable response data and real-world SC administration cost savings are the assets field medical should be deploying proactively now.</p>
+      <div class="admin-compare">
+        <div class="admin-col admin-col-iv">
+          <div class="admin-col-header"><span class="pill pill-watch" style="font-size:8px">Without Vyvgart</span><span class="admin-col-name">Chronic IVIg Cost</span></div>
+          <ul class="admin-items">
+            <li>Infusion center cost: ~$8,000–12,000/infusion</li>
+            <li>Monthly: ~$16,000–24,000 for 2× monthly</li>
+            <li>Annual: ~$200K+ per patient</li>
+            <li><strong>Plus: productivity loss, travel, nursing</strong></li>
+          </ul>
+        </div>
+        <div class="admin-col admin-col-sc">
+          <div class="admin-col-header"><span class="pill pill-sc" style="font-size:8px">Vyvgart Hytrulo</span><span class="admin-col-name">SC Home Admin</span></div>
+          <ul class="admin-items">
+            <li>Home self-injection: no infusion center cost</li>
+            <li>Q4W maintenance dosing</li>
+            <li><strong>Eliminates nursing/facility overhead</strong></li>
+            <li>My VYVGART Path: NCM home training</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">Are your key CIDP prescribers aware of the home SC administration cost offset argument for Vyvgart Hytrulo — and have any payer medical directors in your territory asked for ADHERE durable response data as part of a formulary conversation?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="bottom-line">
+      <div class="bottom-line-header">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="0.5" y="0.5" width="13" height="13" rx="2.5" stroke="#00A8FF"/><path d="M3.5 7l2.5 2.5 4.5-4.5" stroke="#00A8FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="bottom-line-label">Bottom Line &nbsp;&middot;&nbsp; 3 Things That Matter</span>
+      </div>
+      <div class="bottom-line-items">
+        <div class="bottom-line-item"><span class="bl-num">01</span><p class="bl-text">The 35% budget impact number is in payer P&T meetings now. Field medical must be prepared to address it with the ADHERE durable response data and the SC home administration cost offset argument — before it becomes a step-therapy barrier.</p></div>
+        <div class="bottom-line-item"><span class="bl-num">02</span><p class="bl-text">Prior auth for CIDP was not on the landscape 12 months ago. It is now. The window to establish favorable formulary placement is closing. Proactive medical director engagement in Q3 2026 is the priority action.</p></div>
+        <div class="bottom-line-item"><span class="bl-num">03</span><p class="bl-text">The SC home administration cost elimination is the most compelling payer value argument available — and it is under-communicated. Every medical director conversation should include the infusion-center cost offset.</p></div>
+      </div>
+    </div>
+    <div class="brief-footer">
+      <div class="footer-sources"><strong>Sources</strong> &nbsp;·&nbsp; NeurologyLive · Curr Treat Options Neurol · AANEM 2025 &nbsp;&middot;&nbsp; June 3, 2026</div>
+      <div class="footer-disc">All sources external and public. Internal use only.</div>
+    </div>
+  </div><!-- /brief-payer -->
+
+  <!-- ══ BRIEF: POST-AAN 2026 ADHERE ══════════ -->
+  <div id="brief-adhere" class="brief-content" style="max-width:780px;margin:0 auto;padding:28px 36px 80px;">
+    <div class="brief-eyebrow">
+      <span class="tag tag-outline">Intelligence Brief</span>
+      <span class="tag tag-product">CIDP · Post-Congress</span>
+      <span class="eyebrow-date">June 1, 2026 &middot; 6:55 AM ET</span>
+    </div>
+    <h1 class="brief-headline">87.5% early benefit in treatment-naïve CIDP. Clinical media picked it up independently. <em>Every week the field doesn't reinforce it, the default stays with IVIg.</em></h1>
+    <p class="brief-lede">Three signals emerged from AAN Chicago and its immediate aftermath. An ADHERE post-hoc analysis showing 87.5% early benefit in treatment-naïve CIDP patients is the most important data point. Medscape covered it independently four days later. The earlier-line narrative is forming in clinical media — but community neurologists won't see it without field reinforcement.</p>
+    <div class="brief-meta">
+      <div class="meta-item"><span class="meta-label">Signal Type</span><span class="meta-value">Clinical · Post-Congress</span></div>
+      <div class="meta-item"><span class="meta-label">Signals</span><span class="meta-value dim">3 Active</span></div>
+      <div class="meta-item"><span class="meta-label">Priority</span><span class="meta-value warn">High · Reinforce Now</span></div>
+      <div class="meta-item"><span class="meta-label">Date</span><span class="meta-value dim">June 1, 2026</span></div>
+    </div>
+    <div class="situation-room">
+      <div class="situation-label">&#9679; Situation Room &nbsp;&middot;&nbsp; 3 Active Signals</div>
+      <p class="situation-body"><strong>The post-AAN picture:</strong> argenx presented an ADHERE post-hoc analysis showing 87.5% of treatment-naïve CIDP patients achieved early benefit from Vyvgart Hytrulo at AAN 2026. Medscape published an independent clinical summary on April 23 framing efgartigimod as "offering additional options, particularly for patients who cannot tolerate immunoglobulin." That framing — earlier-line, not just IVIg failure — is the narrative argenx needs to own. Community neurologists are 6+ months behind academic centers on algorithm updates. Every MSL interaction in June is a chance to shape how CIDP is treated in community practice.</p>
+    </div>
+    <div class="brief-section" style="animation-delay:0.05s">
+      <div class="section-number"><span class="section-num">01</span><span class="section-cat">Clinical Data · ADHERE Post-Hoc</span></div>
+      <h2 class="section-h2">87.5% early benefit in treatment-naïve CIDP. <em>The trial design undersells the opportunity — the post-hoc tells the real story.</em></h2>
+      <div class="pills"><span class="pill pill-hot">&#8593; Active</span><span class="pill pill-watch">Post-Congress Signal</span></div>
+      <p class="section-body">The ADHERE trial enrolled CIDP patients with prior IVIg exposure — by design, not a treatment-naïve population. The post-hoc analysis presented at AAN 2026 isolated the subset of patients who were treatment-naïve and found 87.5% achieved early benefit (defined as I-RODS or AUC improvement). This data point reframes the positioning question from "second-line after IVIg failure" to "consider earlier." It is a post-hoc, not a primary endpoint — but the magnitude is large enough to drive the conversation.</p>
+      <div class="pull-quote">
+        <p class="pull-quote-text">"The post-hoc data in treatment-naïve patients was striking. 87.5% achieving early benefit is a signal that the ADHERE design may have been conservative in where it positioned efgartigimod in the treatment algorithm."</p>
+        <span class="pull-quote-cite">— Neuromuscular KOL commentary &middot; AAN 2026 &middot; Chicago, April 2026</span>
+      </div>
+      <div class="sources">
+        <a class="source-chip" href="https://www.globenewswire.com/news-release/2026/04/18/3276554/0/en/argenx-Brings-Neuromuscular-Leadership-to-AAN-2026-with-New-Data-Supporting-Broader-VYVGART-Use-Across-MG-and-CIDP.html" target="_blank">GlobeNewswire AAN 2026</a>
+        <a class="source-chip" href="https://reference.medscape.com/viewarticle/cidp-first-line-treatment-adults-2026a1000909" target="_blank">Medscape Apr 23 2026</a>
+      </div>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">Are you aware of the post-hoc ADHERE data showing 87.5% early benefit in treatment-naïve CIDP — and has this changed where you are positioning Vyvgart Hytrulo in your treatment algorithm relative to IVIg?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="brief-section" style="animation-delay:0.10s">
+      <div class="section-number"><span class="section-num">02</span><span class="section-cat">Clinical Media · Independent Framing</span></div>
+      <h2 class="section-h2">Medscape framed efgartigimod as "earlier-line" without argenx prompting. <em>This is the window — it won't stay open.</em></h2>
+      <div class="pills"><span class="pill pill-new">&#9679; Independent Signal</span><span class="pill pill-watch">Media Framing</span></div>
+      <p class="section-body">Medscape published a clinical summary on April 23 — four days after AAN 2026 — describing efgartigimod as "offering additional options, particularly for patients who cannot tolerate immunoglobulin." This is not brand messaging. It is independent clinical journalism reaching the same audience as argenx's field team. Community neurologists who did not attend AAN will encounter this framing first. The question is whether field medical reinforces it or lets IVIg inertia fill the space.</p>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">Among community neurologists in your geography who did not attend AAN 2026, how many are aware of the treatment-naïve CIDP data — and is the Medscape framing reaching them, or is IVIg inertia still the dominant conversation?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="brief-section" style="animation-delay:0.15s">
+      <div class="section-number"><span class="section-num">03</span><span class="section-cat">Community Neurology · Algorithm Gap</span></div>
+      <h2 class="section-h2">Community practice lags academic centers by 6+ months. <em>The CIDP treatment algorithm update is not self-executing.</em></h2>
+      <div class="pills"><span class="pill pill-watch">Practice Gap</span><span class="pill pill-hot">MSL Opportunity</span></div>
+      <p class="section-body">Based on AAN 2026 audience survey data, 40% of community neurologists wait more than 6 months on IVIg before considering FcRn inhibition — compared to academic centers that are moving earlier. The academic-community gap is the MSL's primary leverage point. The post-hoc treatment-naïve data plus the Medscape independent framing gives field medical a two-source argument for earlier positioning that is not dependent on a single brand message. June and July conversations are the window to move the community needle before the payer access barrier closes further.</p>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">At what point in the CIDP treatment journey are community neurologists in your territory currently considering Vyvgart Hytrulo — and what would it take for them to consider it earlier than they currently do?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="bottom-line">
+      <div class="bottom-line-header">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="0.5" y="0.5" width="13" height="13" rx="2.5" stroke="#00A8FF"/><path d="M3.5 7l2.5 2.5 4.5-4.5" stroke="#00A8FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="bottom-line-label">Bottom Line &nbsp;&middot;&nbsp; 3 Things That Matter</span>
+      </div>
+      <div class="bottom-line-items">
+        <div class="bottom-line-item"><span class="bl-num">01</span><p class="bl-text">The 87.5% treatment-naïve benefit data is the most important piece of evidence for earlier-line positioning. Every MSL should lead with it in June conversations — it is a post-hoc, not a primary endpoint, but the magnitude demands discussion.</p></div>
+        <div class="bottom-line-item"><span class="bl-num">02</span><p class="bl-text">Clinical media has already formed the "earlier-line option" framing without argenx prompting. The work now is reinforcing it in community neurology — where the majority of CIDP patients are actually treated and where IVIg inertia is strongest.</p></div>
+        <div class="bottom-line-item"><span class="bl-num">03</span><p class="bl-text">The earlier-line narrative will compete with the IVIg transition relapse signal. Both are true and both need to be addressed in the same MSL conversation — the transition safety framework is the solution that makes earlier positioning credible, not contradictory.</p></div>
+      </div>
+    </div>
+    <div class="brief-footer">
+      <div class="footer-sources"><strong>Sources</strong> &nbsp;·&nbsp; GlobeNewswire · Medscape · NeurologyLive · AAN 2026 &nbsp;&middot;&nbsp; June 1, 2026</div>
+      <div class="footer-disc">All sources external and public. Internal use only.</div>
+    </div>
+  </div><!-- /brief-adhere -->
+
+  <!-- ══ BRIEF: ADAPT OCULUS ═══════════════════ -->
+  <div id="brief-adapt" class="brief-content" style="max-width:780px;margin:0 auto;padding:28px 36px 80px;">
+    <div class="brief-eyebrow">
+      <span class="tag tag-outline">Intelligence Brief</span>
+      <span class="tag tag-product">Pipeline · TED · FcRn Platform</span>
+      <span class="eyebrow-date">May 12, 2026 &middot; 7:00 AM ET</span>
+    </div>
+    <h1 class="brief-headline">ADAPT OCULUS hits primary endpoint in thyroid eye disease. <em>The FcRn platform just opened ophthalmology</em> — and neurologists will be asked about it.</h1>
+    <p class="brief-lede">argenx announced Phase 3 positive results for efgartigimod SC in active moderate-to-severe thyroid eye disease (TED). The trial hit its primary endpoint: CAS ≤1 at Week 24 in 67% of patients vs 31% placebo. This is the sixth indication for efgartigimod. Ophthalmologists, endocrinologists, and neurologists will all be drawn into the FcRn platform conversation in different ways — and field medical needs to be ready for all three.</p>
+    <div class="brief-meta">
+      <div class="meta-item"><span class="meta-label">Signal Type</span><span class="meta-value">Pipeline · Phase 3</span></div>
+      <div class="meta-item"><span class="meta-label">Indication</span><span class="meta-value dim">Thyroid Eye Disease (TED)</span></div>
+      <div class="meta-item"><span class="meta-label">Priority</span><span class="meta-value">Platform Signal</span></div>
+      <div class="meta-item"><span class="meta-label">Date</span><span class="meta-value dim">May 12, 2026</span></div>
+    </div>
+    <div class="situation-room">
+      <div class="situation-label">&#9679; Situation Room &nbsp;&middot;&nbsp; Platform Expansion Signal</div>
+      <p class="situation-body"><strong>What this means for the platform:</strong> The ADAPT OCULUS result extends FcRn inhibition into ophthalmology — joining gMG, CIDP, ITP, and pipeline indications. TED is driven by TSH receptor antibodies (IgG), making it mechanistically identical to the other FcRn indications. The current TED standard of care is Tepezza (teprotumumab, Amgen) — IV infusion, 8 infusions over 5 months. Efgartigimod SC prefilled syringe at home is a structurally different proposition. Neurologists will be asked about this result by colleagues and by patients who are googling "Vyvgart."</p>
+    </div>
+    <div class="brief-section" style="animation-delay:0.05s">
+      <div class="section-number"><span class="section-num">01</span><span class="section-cat">Phase 3 Data · TED</span></div>
+      <h2 class="section-h2">67% vs 31% placebo at Week 24 on CAS ≤1. <em>The primary endpoint was hit with p&lt;0.001 and no new safety signals.</em></h2>
+      <div class="pills"><span class="pill pill-new">&#9679; Phase 3 Positive</span><span class="pill pill-watch">Platform Signal</span></div>
+      <p class="section-body">ADAPT OCULUS enrolled adults with active moderate-to-severe TED (Clinical Activity Score ≥3). Primary endpoint: CAS ≤1 at Week 24. Efgartigimod SC achieved this in 67% of patients vs 31% placebo (p&lt;0.001). Secondary endpoints including proptosis reduction and diplopia response were also positive. The tolerability profile was consistent with the established efgartigimod safety database. This result is the strongest Phase 3 positive for the FcRn platform in 2026.</p>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">Have any neurology KOLs in your territory asked about the ADAPT OCULUS TED result — and are ophthalmologists or endocrinologists at your accounts engaging with the FcRn mechanism in the context of this data?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="brief-section" style="animation-delay:0.10s">
+      <div class="section-number"><span class="section-num">02</span><span class="section-cat">Competitive · vs Tepezza</span></div>
+      <h2 class="section-h2">Tepezza requires 8 IV infusions over 5 months. <em>Efgartigimod SC prefilled syringe at home is the same narrative as CIDP — different disease, same structural advantage.</em></h2>
+      <div class="pills"><span class="pill pill-watch">Competitive Positioning</span><span class="pill pill-sc">SC · Home</span></div>
+      <p class="section-body">The current TED standard is Tepezza (teprotumumab, Amgen) — approved 2020, 8 IV infusions over 5 months, administered in an infusion center. Teprotumumab targets IGF-1R, not FcRn. The patient experience burden mirrors chronic IVIg in CIDP: scheduled infusions, time off work, infusion center dependence. Efgartigimod SC home self-injection in TED is the same differentiation story argenx is building in CIDP and gMG — and it will resonate with the same patients and caregivers who are already hearing the SC autonomy narrative.</p>
+      <table class="comp-matrix">
+        <thead><tr><th>Agent · Indication</th><th>Mechanism</th><th>Route</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>Efgartigimod SC · TED (pending)</td><td>FcRn inhibition</td><td><span class="chk">&#10003;</span> SC home self-inject</td><td>Q4W maintenance</td></tr>
+          <tr><td>Tepezza · TED (approved)</td><td>IGF-1R inhibitor</td><td>&#10007; IV infusion center</td><td>8 infusions / 5 months</td></tr>
+        </tbody>
+      </table>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">Are any neurologists or endocrinologists in your accounts treating TED patients currently on Tepezza who have expressed frustration with the infusion burden — and are they aware of the ADAPT OCULUS Phase 3 result?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="bottom-line">
+      <div class="bottom-line-header">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="0.5" y="0.5" width="13" height="13" rx="2.5" stroke="#00A8FF"/><path d="M3.5 7l2.5 2.5 4.5-4.5" stroke="#00A8FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="bottom-line-label">Bottom Line &nbsp;&middot;&nbsp; 3 Things That Matter</span>
+      </div>
+      <div class="bottom-line-items">
+        <div class="bottom-line-item"><span class="bl-num">01</span><p class="bl-text">ADAPT OCULUS extends the FcRn platform story beyond neurology into ophthalmology — and opens conversations at academic medical centers where neurologists and ophthalmologists share the same KOL network. This is a platform validation event, not just a new indication.</p></div>
+        <div class="bottom-line-item"><span class="bl-num">02</span><p class="bl-text">The SC home self-injection advantage vs Tepezza's 8 IV infusions is the same narrative argenx is building in CIDP. MSLs should be prepared to articulate this for neurologist KOLs who are asked about TED by their ophthalmology colleagues.</p></div>
+        <div class="bottom-line-item"><span class="bl-num">03</span><p class="bl-text">Patients already on Vyvgart Hytrulo for gMG or CIDP may have co-occurring TED. The TED result will surface in patient communities — field medical should anticipate cross-indication questions and be prepared to guide HCPs on appropriate off-label communication boundaries.</p></div>
+      </div>
+    </div>
+    <div class="brief-footer">
+      <div class="footer-sources"><strong>Sources</strong> &nbsp;·&nbsp; argenx Press Release · Clinical trial data · Amgen Tepezza prescribing information &nbsp;&middot;&nbsp; May 12, 2026</div>
+      <div class="footer-disc">All sources external and public. Internal use only.</div>
+    </div>
+  </div><!-- /brief-adapt -->
+
+  <!-- ══ BRIEF: RYSTIGGO SC APPROVAL ══════════ -->
+  <div id="brief-rystiggo" class="brief-content" style="max-width:780px;margin:0 auto;padding:28px 36px 80px;">
+    <div class="brief-eyebrow">
+      <span class="tag tag-outline">Intelligence Brief</span>
+      <span class="tag tag-product">Competitive · UCB · gMG</span>
+      <span class="eyebrow-date">May 10, 2026 &middot; 6:30 AM ET</span>
+    </div>
+    <h1 class="brief-headline">UCB's Rystiggo received SC approval in gMG. The first same-class SC competitor. <em>argenx's CIDP moat is now the only uncontested FcRn position — for 12–18 months.</em></h1>
+    <p class="brief-lede">UCB received FDA approval for a subcutaneous formulation of Rystiggo (rozanolixizumab) in generalized myasthenia gravis (AChR+ and MuSK+) in May 2026. This is the first FcRn inhibitor competitor with a subcutaneous formulation in gMG. The competitive landscape in gMG has changed materially. In CIDP, argenx maintains sole FcRn approval — but the window is 12–18 months based on UCB's CIDP trial timeline.</p>
+    <div class="brief-meta">
+      <div class="meta-item"><span class="meta-label">Signal Type</span><span class="meta-value warn">&#9650; Competitor Move</span></div>
+      <div class="meta-item"><span class="meta-label">Competitor</span><span class="meta-value dim">UCB · Rystiggo SC</span></div>
+      <div class="meta-item"><span class="meta-label">Priority</span><span class="meta-value warn">High · Strategic</span></div>
+      <div class="meta-item"><span class="meta-label">Date</span><span class="meta-value dim">May 10, 2026</span></div>
+    </div>
+    <div class="situation-room">
+      <div class="situation-label">&#9679; Situation Room &nbsp;&middot;&nbsp; Competitive Alert</div>
+      <p class="situation-body"><strong>The competitive picture:</strong> Rystiggo SC approval in gMG means subcutaneous administration is now a category feature in FcRn inhibitors — not an argenx differentiator in that indication. The strategic response must shift to what argenx uniquely holds: the CIDP indication (sole approval), Q4W dosing convenience vs Rystiggo's Q2W schedule, and the co-formulated hyaluronidase SC delivery system. In CIDP, argenx has an estimated 12–18 months before Rystiggo's CIDP trial readout changes the landscape permanently.</p>
+    </div>
+    <div class="brief-section" style="animation-delay:0.05s">
+      <div class="section-number"><span class="section-num">01</span><span class="section-cat">Competitive · gMG Landscape</span></div>
+      <h2 class="section-h2">SC is now a category feature in FcRn inhibitors. <em>Q4W dosing and CIDP-only position are argenx's two remaining structural advantages.</em></h2>
+      <div class="pills"><span class="pill pill-alert">&#9650; Competitor Move</span><span class="pill pill-watch">gMG Landscape</span></div>
+      <p class="section-body">Rystiggo SC (rozanolixizumab) is approved in gMG for AChR+ and MuSK+ subtypes — the same patient population as Vyvgart Hytrulo in gMG. The MuSK+ coverage is a broader label point. Key differentiators that remain for Vyvgart Hytrulo in gMG: Q4W maintenance dosing (vs Rystiggo's Q2W schedule), co-formulated hyaluronidase enabling the 20–30 second prefilled syringe at home (vs Rystiggo's autoinjector which is newer to market), and the CIDP indication. Community neurologists are not yet aware of the Q4W vs Q2W dosing difference — this is the most actionable near-term MSL message.</p>
+      <table class="comp-matrix">
+        <thead><tr><th>Agent</th><th>gMG Label</th><th>CIDP</th><th>SC Route</th><th>Dosing</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td>Vyvgart Hytrulo · argenx</td><td>AChR+</td><td><span class="chk">&#10003;</span> Only approved</td><td>Prefilled · home · 20s</td><td><strong>Q4W</strong></td></tr>
+          <tr><td>Rystiggo SC · UCB</td><td>AChR+ / MuSK+</td><td><span class="crs">&#10007;</span> Trial ongoing</td><td>Autoinjector · clinic</td><td>Q2W</td></tr>
+          <tr><td>IMAAVY · J&amp;J</td><td>AChR+ / MuSK+</td><td><span class="crs">&#10007;</span></td><td><span class="crs">&#10007;</span> IV only</td><td>Q4W IV</td></tr>
+        </tbody>
+      </table>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">Are neurologists in your territory comparing Vyvgart Hytrulo vs Rystiggo SC — and do they know the Q4W vs Q2W dosing difference? Is the CIDP indication gap being raised in gMG conversations as a platform differentiator?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="brief-section" style="animation-delay:0.10s">
+      <div class="section-number"><span class="section-num">02</span><span class="section-cat">Strategic · CIDP Window</span></div>
+      <h2 class="section-h2">The CIDP window is the strategic imperative. <em>UCB's CIDP trial readout is expected H2 2027 — 12–18 months from now.</em></h2>
+      <div class="pills"><span class="pill pill-hot">&#8593; Urgent</span><span class="pill pill-watch">Strategic Window</span></div>
+      <p class="section-body">UCB's CIDP trial for rozanolixizumab is ongoing. Based on trial timelines, a readout is expected in H2 2027 — approximately 12–18 months from now. If the trial is positive, Rystiggo will have both gMG and CIDP approvals, eliminating argenx's sole CIDP differentiation. Every CIDP patient who starts Vyvgart Hytrulo in the next 12–18 months is a patient who will have established a treatment relationship with argenx before competitive pressure forces the conversation. This is not a future priority — it is the current quarter's strategic imperative.</p>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">Among CIDP-treating neurologists in your territory, how many have a Vyvgart Hytrulo patient currently on treatment — and what is the primary reason any eligible CIDP patients are still on IVIg rather than switched?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="bottom-line">
+      <div class="bottom-line-header">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="0.5" y="0.5" width="13" height="13" rx="2.5" stroke="#00A8FF"/><path d="M3.5 7l2.5 2.5 4.5-4.5" stroke="#00A8FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="bottom-line-label">Bottom Line &nbsp;&middot;&nbsp; 3 Things That Matter</span>
+      </div>
+      <div class="bottom-line-items">
+        <div class="bottom-line-item"><span class="bl-num">01</span><p class="bl-text">SC is no longer an argenx differentiator in gMG — it is a category feature. The message in gMG must shift to Q4W convenience (vs Q2W for Rystiggo) and the 20-second prefilled syringe home experience. Most community neurologists don't yet know the dosing difference.</p></div>
+        <div class="bottom-line-item"><span class="bl-num">02</span><p class="bl-text">The CIDP-only position is the single most important differentiator argenx holds in the FcRn class today. Every MSL conversation should make this explicit — not assumed. Many prescribers don't yet know Rystiggo is not approved for CIDP.</p></div>
+        <div class="bottom-line-item"><span class="bl-num">03</span><p class="bl-text">The 12–18 month CIDP window is not a future priority — it is the current quarter's strategic imperative. Every CIDP patient started on Vyvgart Hytrulo now is a patient whose treatment relationship with argenx predates the competitive landscape change.</p></div>
+      </div>
+    </div>
+    <div class="brief-footer">
+      <div class="footer-sources"><strong>Sources</strong> &nbsp;·&nbsp; UCB press release · FDA approval records · Curr Treat Options Neurol &nbsp;&middot;&nbsp; May 10, 2026</div>
+      <div class="footer-disc">All sources external and public. Internal use only.</div>
+    </div>
+  </div><!-- /brief-rystiggo -->
+
+  <!-- ══ BRIEF: IMAAVY withMe ══════════════════ -->
+  <div id="brief-imaavy" class="brief-content" style="max-width:780px;margin:0 auto;padding:28px 36px 80px;">
+    <div class="brief-eyebrow">
+      <span class="tag tag-outline">Intelligence Brief</span>
+      <span class="tag tag-product">Competitive · J&amp;J · Patient Support</span>
+      <span class="eyebrow-date">April 28, 2026 &middot; 7:30 AM ET</span>
+    </div>
+    <h1 class="brief-headline">J&amp;J confirmed the withMe patient support program for IMAAVY — modeled on My VYVGART Path. <em>The patient experience race is now on.</em></h1>
+    <p class="brief-lede">Johnson &amp; Johnson confirmed the IMAAVY withMe patient support program in late April 2026: co-pay assistance, nurse navigator, and IV infusion site coordination. The program is structurally modeled on best-practice patient support programs including argenx's My VYVGART Path. One structural gap remains permanent: withMe is infusion-center dependent. IMAAVY has no SC formulation. The home self-injection advantage My VYVGART Path enables cannot be replicated by withMe.</p>
+    <div class="brief-meta">
+      <div class="meta-item"><span class="meta-label">Signal Type</span><span class="meta-value warn">Competitive · Patient Support</span></div>
+      <div class="meta-item"><span class="meta-label">Competitor</span><span class="meta-value dim">J&amp;J · IMAAVY</span></div>
+      <div class="meta-item"><span class="meta-label">Priority</span><span class="meta-value dim">Monitor · Respond</span></div>
+      <div class="meta-item"><span class="meta-label">Date</span><span class="meta-value dim">April 28, 2026</span></div>
+    </div>
+    <div class="situation-room">
+      <div class="situation-label">&#9679; Situation Room &nbsp;&middot;&nbsp; Patient Support Competitive Signal</div>
+      <p class="situation-body"><strong>The patient support picture:</strong> J&amp;J confirming a structured patient support program signals they understand patient support is a prescribing decision factor — not just a reimbursement tool. The withMe program mirrors the structure of My VYVGART Path: financial assistance, nurse navigation, and care coordination. The permanent structural difference: My VYVGART Path includes Nurse Case Manager home training for SC self-injection. withMe coordinates infusion center visits. As long as IMAAVY is IV-only in gMG, that distinction cannot close — and it maps directly to the SC autonomy narrative that is growing fastest in patient advocacy communities.</p>
+    </div>
+    <div class="brief-section" style="animation-delay:0.05s">
+      <div class="section-number"><span class="section-num">01</span><span class="section-cat">Competitive · Patient Support Programs</span></div>
+      <h2 class="section-h2">withMe vs My VYVGART Path: the programs are comparable on access support. <em>The SC home training advantage is the one withMe structurally cannot match.</em></h2>
+      <div class="pills"><span class="pill pill-watch">Competitive Monitor</span><span class="pill pill-sc">SC · Structural Advantage</span></div>
+      <p class="section-body">The IMAAVY withMe program offers co-pay assistance, nurse navigator support for infusion scheduling, and prior authorization navigation. My VYVGART Path offers the same access support features — plus the Nurse Case Manager home SC self-injection training program, which is only possible because Vyvgart Hytrulo has an SC formulation. J&amp;J's decision to build a structured patient support program validates that this layer of the patient experience is now a competitive battlefield — and argenx holds a structural advantage in the most differentiated element of it.</p>
+      <div class="admin-compare">
+        <div class="admin-col admin-col-iv">
+          <div class="admin-col-header"><span class="pill pill-watch" style="font-size:8px">J&amp;J</span><span class="admin-col-name">IMAAVY withMe</span></div>
+          <ul class="admin-items">
+            <li>Co-pay assistance</li>
+            <li>Nurse navigator (infusion scheduling)</li>
+            <li>Prior auth navigation</li>
+            <li><strong>IV infusion center only</strong></li>
+          </ul>
+        </div>
+        <div class="admin-col admin-col-sc">
+          <div class="admin-col-header"><span class="pill pill-sc" style="font-size:8px">argenx</span><span class="admin-col-name">My VYVGART Path</span></div>
+          <ul class="admin-items">
+            <li>Co-pay assistance</li>
+            <li>Nurse Case Manager navigation</li>
+            <li>Prior auth navigation</li>
+            <li><strong>Home SC self-injection training</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">Are neurologists and infusion nurses at your accounts aware of the My VYVGART Path NCM home-training program — and has the IMAAVY withMe program been raised as a comparison point in any access or patient support conversations?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="brief-section" style="animation-delay:0.10s">
+      <div class="section-number"><span class="section-num">02</span><span class="section-cat">Strategic · SC Advantage</span></div>
+      <h2 class="section-h2">J&amp;J's co-pay programs are well-funded. <em>The financial parity risk is real — the SC structural advantage is not at risk.</em></h2>
+      <div class="pills"><span class="pill pill-hot">&#8593; Monitor</span><span class="pill pill-watch">Access Dynamics</span></div>
+      <p class="section-body">J&amp;J's pharmaceutical division has deep patient support program budgets. Co-pay assistance parity is achievable quickly — and field medical should anticipate that withMe co-pay terms will be competitive with My VYVGART Path. The risk is that co-pay parity becomes the conversation, crowding out the SC home administration differentiation. The proactive counter: ensure that prescribers and infusion coordinators know My VYVGART Path's home training feature exists — it is systematically under-communicated — before the withMe co-pay comparison becomes the anchor point in access discussions.</p>
+      <div class="fvq">
+        <div class="fvq-label">&#8594; Field Validation Question</div>
+        <p class="fvq-text">Have any infusion coordinators or practice managers in your territory raised IMAAVY withMe as an alternative to My VYVGART Path for their gMG patients — and do they understand that My VYVGART Path includes NCM home self-injection training that withMe structurally cannot offer?</p>
+      </div>
+    </div>
+    <div class="section-rule"></div>
+    <div class="bottom-line">
+      <div class="bottom-line-header">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="0.5" y="0.5" width="13" height="13" rx="2.5" stroke="#00A8FF"/><path d="M3.5 7l2.5 2.5 4.5-4.5" stroke="#00A8FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="bottom-line-label">Bottom Line &nbsp;&middot;&nbsp; 3 Things That Matter</span>
+      </div>
+      <div class="bottom-line-items">
+        <div class="bottom-line-item"><span class="bl-num">01</span><p class="bl-text">J&amp;J confirming a patient support program validates that patient support is a prescribing decision factor. argenx's My VYVGART Path has a structural advantage they cannot replicate: home SC self-injection training. This needs to be communicated more proactively — it is currently the most under-communicated argenx differentiator in field conversations.</p></div>
+        <div class="bottom-line-item"><span class="bl-num">02</span><p class="bl-text">The IV infusion limitation for IMAAVY is permanent — J&amp;J has no SC formulation in development for gMG. The SC autonomy story is argenx's to own for the foreseeable future in the FcRn class for gMG. Don't let withMe co-pay parity become the comparison anchor.</p></div>
+        <div class="bottom-line-item"><span class="bl-num">03</span><p class="bl-text">Co-pay program terms from J&amp;J will be competitive. Field medical should track whether access advisors start raising withMe in formulary conversations and be prepared to articulate My VYVGART Path's full value — financial assistance plus the NCM home-training capability — as a complete offering, not just financial support.</p></div>
+      </div>
+    </div>
+    <div class="brief-footer">
+      <div class="footer-sources"><strong>Sources</strong> &nbsp;·&nbsp; J&amp;J press release · IMAAVY prescribing information · My VYVGART Path program materials &nbsp;&middot;&nbsp; April 28, 2026</div>
+      <div class="footer-disc">All sources external and public. Internal use only.</div>
+    </div>
+  </div><!-- /brief-imaavy -->
 
   <!-- ══ VIEW: SIGNAL VELOCITY ════════════════ -->
   <div id="view-velocity" class="view">
@@ -1085,10 +1458,14 @@ function showView(id, navEl) {
   }
 }
 
-function switchBrief(card, viewId) {
+function switchBrief(card, briefId) {
   document.querySelectorAll('.brief-card').forEach(c => c.classList.remove('active'));
   card.classList.add('active');
-  showView(viewId, document.getElementById('nav-brief'));
+  document.querySelectorAll('.brief-content').forEach(c => c.classList.remove('active'));
+  const bc = document.getElementById('brief-' + briefId);
+  if (bc) bc.classList.add('active');
+  showView('brief', document.getElementById('nav-brief'));
+  document.getElementById('main').scrollTop = 0;
 }
 
 function openPersona()  { document.getElementById('overlay').classList.add('open'); }
