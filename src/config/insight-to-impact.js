@@ -1,38 +1,36 @@
 // Insight-to-Impact — Vision Doc Module 2 (Insights to Action) impact view.
 // Surfaces the lineage from a captured insight → action taken → measurable
-// outcome, with timeframe and impact score.
-//
-// Default fill: Alexion (template example). Overwrite per demo.
+// outcome, with timeframe and impact score — argenx demo.
 
 export const INSIGHT_TO_IMPACT = [
   {
     id: 'i2i-1',
-    insight: 'Community hematologists request a switching algorithm one-pager.',
-    action: 'Patient-facing Soliris→Ultomiris switching one-pager deployed to MSL field team across NA + EU5.',
-    outcome: '+18% switch-conversation rate in tracked accounts; community center inquiries up 2.1×.',
+    insight: 'Community neurologists request an SC conversion narrative for stable IV patients.',
+    action: 'Community-facing IV→SC Hytrulo conversion narrative deployed to the MSL field team across NA + EU5.',
+    outcome: '+16% conversion-conversation rate in tracked accounts; home-injection enrollment inquiries up 1.8×.',
     timeframe: '6 weeks',
     impactScore: 8,
     relatedInsight: 'AI1',
-    relatedMO: 'MO2',
+    relatedMO: 'MO1',
   },
   {
     id: 'i2i-2',
-    insight: 'Recurring physician concern about C3-mediated extravascular hemolysis.',
-    action: 'BTH evidence pack commissioned; advisory board scheduled for proximal-complement positioning.',
-    outcome: 'Slide deck adopted by 11 of 14 KOLs in 2026 Q1; competitor narrative neutralized in 3 ad-board markets.',
+    insight: 'CIDP neurologists want head-to-head framing before earlier-line positioning.',
+    action: 'ADHERE post-hoc treatment-naïve sub-analysis commissioned; MSL briefing deck built around the 87.5% early-benefit finding.',
+    outcome: 'Adopted by 9 of 14 targeted CIDP KOLs in Q2 2026; earlier-line conversation rate up in community accounts.',
     timeframe: '8 weeks',
     impactScore: 7,
-    relatedInsight: 'AI3',
-    relatedMO: 'MO3',
+    relatedInsight: 'AI2',
+    relatedMO: 'MO2',
   },
   {
     id: 'i2i-3',
-    insight: 'Pediatric aHUS dosing confidence gap surfaced via MSL interactions.',
-    action: 'Targeted scientific-exchange session with pediatric hematology centers; registry data refresh distributed.',
-    outcome: 'Awareness ladder progression: 27 HCPs moved Aware → Knowledgeable; 4 pediatric centers initiated protocol updates.',
+    insight: 'Home self-administration training gap surfaced via MSL and patient-support interactions.',
+    action: 'Patient + HCP self-injection confidence toolkit co-created with the patient support program; distributed to the top 20 infusion-to-home accounts.',
+    outcome: 'Self-injection confidence score up from 58% to 74% in surveyed patients; 6 accounts completed full transition.',
     timeframe: '10 weeks',
     impactScore: 6,
-    relatedInsight: 'AI5',
+    relatedInsight: 'AI4',
     relatedMO: 'MO1',
   },
 ];

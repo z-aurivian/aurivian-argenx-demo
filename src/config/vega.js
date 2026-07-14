@@ -13,13 +13,14 @@ export const VEGA_AWARENESS_PROGRESSION = {
 };
 
 export const VEGA_INTERACTION_QUALITY = {
-  insight: 'Marcus T shows high interaction volume but below-average insight capture rate — MSL conversations are generating competitive differentiation opportunities that are not being documented for cross-regional sharing. Sarah K shows excellent quality and FcRn competitor alignment. Recommended: MSL training on LP3 competitor differentiation protocol.',
+  insight: 'Marcus Brennan shows high interaction volume but below-average insight capture rate — MSL conversations are generating competitive differentiation opportunities that are not being documented for cross-regional sharing. Aisha Rahman shows excellent quality and FcRn competitor alignment. Recommended: MSL training on LP3 competitor differentiation protocol.',
   rows: [
-    { msl: 'Sarah K',    region: 'Northeast',  interactions: 47, vsTarget: '+12%', quality: 9.0, insightRate: 84, overall: 'Excellent'     },
-    { msl: 'Marcus T',   region: 'Southeast',  interactions: 54, vsTarget: '+24%', quality: 6.1, insightRate: 38, overall: 'Quality gap'   },
-    { msl: 'Elena M',    region: 'Midwest',    interactions: 39, vsTarget: '-5%',  quality: 8.4, insightRate: 77, overall: 'Volume gap'    },
-    { msl: 'James W',    region: 'West',       interactions: 44, vsTarget: '+7%',  quality: 8.1, insightRate: 72, overall: 'On track'      },
-    { msl: 'Priya D',    region: 'South',      interactions: 28, vsTarget: '-28%', quality: 5.9, insightRate: 33, overall: 'Needs support' },
+    { msl: 'Aisha Rahman',  region: 'National',      interactions: 52, vsTarget: '+12%', quality: 9.0, insightRate: 84, overall: 'Excellent'     },
+    { msl: 'Marcus Brennan', region: 'Southeast',    interactions: 54, vsTarget: '+24%', quality: 6.1, insightRate: 38, overall: 'Quality gap'   },
+    { msl: 'James Holloway', region: 'Midwest',      interactions: 39, vsTarget: '-5%',  quality: 8.4, insightRate: 77, overall: 'Volume gap'    },
+    { msl: 'Priya Nair',    region: 'West (gMG)',     interactions: 44, vsTarget: '+7%',  quality: 8.1, insightRate: 72, overall: 'On track'      },
+    { msl: 'Kevin Park',    region: 'South (CIDP)',   interactions: 28, vsTarget: '-28%', quality: 5.9, insightRate: 33, overall: 'Needs support' },
+    { msl: 'Sophie Laurent', region: 'Neuromuscular', interactions: 36, vsTarget: '-2%',  quality: 7.6, insightRate: 61, overall: 'On track'      },
   ],
 };
 
